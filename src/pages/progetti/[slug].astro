@@ -1,0 +1,80 @@
+---
+import Base from '../../layouts/Base.astro';
+import { projects, categories, type Project } from '../../data/projects';
+import { site } from '../../data/site';
+
+export function getStaticPaths() {
+  return projects.map((p, i) => ({
+    params: { slug: p.slug },
+    props: { project: p, next: projects[(i + 1) % projects.length] },
+  }));
+}
+
+const { project: p, next } = Astro.props as { project: Project; next: Project };
+const host = new URL(p.url).hostname.replace(/^www\./, '');
+---
+
+<Base title={`${p.name} · ${site.name}`} description={p.tagline} image={`/shots/${p.slug}/desktop.webp`}>
+  <main class="detail" style={`--accent:${p.accent}`}>
+    <a href="/#lavori" class="back mono">← Tutti i lavori</a>
+
+    <header class="detail__head" data-reveal>
+      <p class="eyebrow mono"><span class="dot"></span> {categories[p.category]}</p>
+      <h1 class="detail__title">{p.name}</h1>
+      <p class="detail__tagline">{p.tagline}</p>
+    </header>
+
+    <dl class="detail__facts" data-reveal>
+      <div><dt>Settore</dt><dd>{p.sector}</dd></div>
+      <div><dt>Luogo</dt><dd>{p.location}</dd></div>
+      {p.languages && <div><dt>Lingue</dt><dd>{p.languages.join(' · ')}</dd></div>}
+      <div><dt>Ruolo</dt><dd>Design e sviluppo</dd></div>
+      <div><dt>Online</dt><dd><a href={p.url} target="_blank" rel="noopener">{host} ↗</a></dd></div>
+    </dl>
+
+    <figure class="detail__hero" data-reveal>
+      <div class="browser browser--static">
+        <div class="browser__bar">
+          <span class="browser__dots"><i></i><i></i><i></i></span>
+          <span class="browser__url">{host}</span>
+        </div>
+        <img src={`/shots/${p.slug}/desktop.webp`} alt={`Home page di ${p.name}`} width="1280" height="800" />
+      </div>
+    </figure>
+
+    <section class="detail__body">
+      <div class="detail__text" data-reveal>
+        <h2 class="mono label">Il progetto</h2>
+        <p>{p.intro}</p>
+        <h2 class="mono label">Cosa c’è dentro</h2>
+        <ul class="checks">
+          {p.features.map((f) => <li>{f}</li>)}
+        </ul>
+        <a class="btn" href={p.url} target="_blank" rel="noopener">Apri {host} <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="detail__phone" data-reveal>
+        <div class="phone phone--big">
+          <img src={`/shots/${p.slug}/mobile.webp`} alt={`${p.name} su smartphone`} width="585" height="1266" loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+    <section class="detail__scroll" data-reveal>
+      <h2 class="mono label">Scorri la pagina</h2>
+      <div class="browser browser--tall">
+        <div class="browser__bar">
+          <span class="browser__dots"><i></i><i></i><i></i></span>
+          <span class="browser__url">{host}</span>
+        </div>
+        <div class="browser__scroller" tabindex="0" aria-label={`Anteprima scorrevole di ${p.name}`}>
+          <img src={`/shots/${p.slug}/page.webp`} alt={`Pagina completa di ${p.name}`} width="960" loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+    <a href={`/progetti/${next.slug}`} class="next" style={`--accent:${next.accent}`}>
+      <span class="mono">Prossimo progetto</span>
+      <span class="next__name">{next.name} <span aria-hidden="true">→</span></span>
+    </a>
+  </main>
+</Base>

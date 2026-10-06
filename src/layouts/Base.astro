@@ -1,0 +1,78 @@
+---
+import '../styles/global.css';
+import { site } from '../data/site';
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+}
+const { title, description, image = '/og.webp' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(image, Astro.site)} />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#0d0d0c" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="nav">
+      <a href="/" class="nav__logo" aria-label={`${site.name}, home`}>
+        <span class="nav__mark">{site.initials}</span>
+        <span class="nav__name">{site.name}</span>
+      </a>
+      <nav class="nav__links">
+        <a href="/#lavori">Lavori</a>
+        <a href="/#competenze">Competenze</a>
+        <a href="/#contatti" class="nav__cta">Contattami</a>
+      </nav>
+    </header>
+
+    <slot />
+
+    <footer class="footer">
+      <span>© {new Date().getFullYear()} {site.name}</span>
+      <span class="mono">Progettato e sviluppato da me, come tutti i siti qui dentro.</span>
+    </footer>
+
+    <script>
+      // Reveal on scroll
+      const io = new IntersectionObserver(
+        (entries) => {
+          for (const e of entries) {
+            if (e.isIntersecting) {
+              e.target.classList.add('is-in');
+              io.unobserve(e.target);
+            }
+          }
+        },
+        { rootMargin: '0px 0px -10% 0px' },
+      );
+      document.querySelectorAll('[data-reveal]').forEach((el) => io.observe(el));
+
+      // On touch devices, scroll page previews automatically when they are on screen
+      if (matchMedia('(hover: none)').matches) {
+        const auto = new IntersectionObserver(
+          (entries) => entries.forEach((e) => e.target.classList.toggle('is-scrolling', e.isIntersecting)),
+          { threshold: 0.6 },
+        );
+        document.querySelectorAll('.browser').forEach((el) => auto.observe(el));
+      }
+    </script>
+  </body>
+</html>

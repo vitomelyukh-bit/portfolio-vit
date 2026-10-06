@@ -1,0 +1,145 @@
+---
+import Base from '../layouts/Base.astro';
+import Mockup from '../components/Mockup.astro';
+import { projects, categories, type Category } from '../data/projects';
+import { site } from '../data/site';
+
+const used = Object.keys(categories).filter((c) => projects.some((p) => p.category === c)) as Category[];
+const ecommerce = projects.filter((p) => p.category === 'ecommerce').length;
+const sectors = new Set(projects.map((p) => p.sector)).size;
+
+const skills = [
+  { title: 'Siti vetrina', text: 'Design su misura, testi orientati alla conversione, veloci su ogni dispositivo.', ref: ['rare', 'malcusa', 'workadvizee'] },
+  { title: 'E-commerce', text: 'Catalogo, carrello, checkout, account cliente e spedizioni.', ref: ['mimaelulu', 'evoos', 'malcusa'] },
+  { title: 'Prenotazioni online', text: 'Calendario con disponibilità reale, conferme e pagamento online o in sede.', ref: ['olizen'] },
+  { title: 'Pagamenti & gift card', text: 'Incassi online con Stripe, buoni regalo, acquisti di servizi.', ref: ['white-garden', 'olizen'] },
+  { title: 'Aree riservate', text: 'Login, area clienti, strumenti interni e gestionali.', ref: ['iamundo-candido', 'olizen', 'mimaelulu'] },
+  { title: 'Lead generation', text: 'Moduli guidati, CTA chiama / WhatsApp, landing che portano richieste.', ref: ['galletti', 'ricci'] },
+  { title: 'Multilingua', text: 'Siti in più lingue per vendere anche all’estero.', ref: ['mimaelulu', 'malcusa'] },
+  { title: 'SEO locale & contenuti', text: 'Struttura, meta e blog per farsi trovare in zona.', ref: ['ricci', 'iamundo-candido', 'evoos'] },
+];
+const byslug = Object.fromEntries(projects.map((p) => [p.slug, p]));
+const contactHref = site.email ? `mailto:${site.email}` : site.whatsapp ? `https://wa.me/${site.whatsapp}` : '';
+---
+
+<Base
+  title={`${site.name} · Portfolio siti web ed e-commerce`}
+  description={`${projects.length} siti, e-commerce e piattaforme progettati e sviluppati da ${site.name}.`}
+>
+  <main>
+    <section class="hero">
+      <p class="eyebrow mono" data-reveal>
+        <span class="dot"></span> {site.role} · {site.city}
+      </p>
+      <h1 class="hero__title" data-reveal>
+        Siti, e-commerce<br />e gestionali che <em>lavorano</em><br />per chi li usa.
+      </h1>
+      <div class="hero__foot" data-reveal>
+        <p class="hero__lead">
+          Dall’idea alla messa online, faccio tutto io: design, sviluppo, testi, pagamenti, prenotazioni e SEO. Qui sotto
+          trovi alcuni dei progetti che ho realizzato, tutti online e visitabili.
+        </p>
+        <dl class="stats">
+          <div><dt>Progetti online</dt><dd>{projects.length}</dd></div>
+          <div><dt>E-commerce</dt><dd>{ecommerce}</dd></div>
+          <div><dt>Settori diversi</dt><dd>{sectors}</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        {[...projects, ...projects].map((p) => (
+          <img src={`/shots/${p.slug}/desktop.webp`} alt="" width="1280" height="800" loading="eager" />
+        ))}
+      </div>
+    </div>
+
+    <section id="lavori" class="work">
+      <div class="section-head">
+        <h2 class="section-title" data-reveal>Lavori <sup class="mono">{projects.length}</sup></h2>
+        <div class="filters" role="group" aria-label="Filtra per tipologia">
+          <button class="chip is-active" data-filter="all">Tutti</button>
+          {used.map((c) => <button class="chip" data-filter={c}>{categories[c]}</button>)}
+        </div>
+      </div>
+
+      <ol class="projects">
+        {projects.map((p, i) => (
+          <li class="project" data-category={p.category} style={`--accent:${p.accent}`} data-reveal>
+            <div class="project__info">
+              <span class="project__num mono">{String(i + 1).padStart(2, '0')}</span>
+              <p class="project__meta mono">
+                {categories[p.category]} · {p.location}
+              </p>
+              <h3 class="project__name">
+                <a href={`/progetti/${p.slug}`}>{p.name}</a>
+              </h3>
+              <p class="project__sector">{p.sector}</p>
+              <p class="project__tagline">{p.tagline}</p>
+              <ul class="tags">
+                {p.features.slice(0, 3).map((f) => <li>{f}</li>)}
+              </ul>
+              <div class="project__actions">
+                <a class="btn" href={`/progetti/${p.slug}`}>Scopri il progetto <span aria-hidden="true">→</span></a>
+                <a class="btn btn--ghost" href={p.url} target="_blank" rel="noopener">Visita il sito <span aria-hidden="true">↗</span></a>
+              </div>
+            </div>
+            <a href={`/progetti/${p.slug}`} class="project__visual" tabindex="-1" aria-hidden="true">
+              <Mockup slug={p.slug} name={p.name} url={p.url} eager={i < 2} />
+            </a>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section id="competenze" class="skills">
+      <h2 class="section-title" data-reveal>Cosa posso<br /><em>costruire per te</em></h2>
+      <div class="skills__grid">
+        {skills.map((s, i) => (
+          <article class="skill" data-reveal style={`--d:${i * 60}ms`}>
+            <span class="mono skill__num">{String(i + 1).padStart(2, '0')}</span>
+            <h3>{s.title}</h3>
+            <p>{s.text}</p>
+            <p class="skill__ref mono">
+              Es.{' '}
+              {s.ref.map((r, k) => (
+                <>
+                  <a href={`/progetti/${r}`}>{byslug[r].name}</a>
+                  {k < s.ref.length - 1 ? ', ' : ''}
+                </>
+              ))}
+            </p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section id="contatti" class="contact" data-reveal>
+      <p class="eyebrow mono"><span class="dot"></span> Disponibile per nuovi progetti</p>
+      <h2 class="contact__title">Hai un progetto in mente?<br /><em>Parliamone.</em></h2>
+      <p class="contact__lead">Sito, e-commerce o gestionale: raccontami cosa ti serve e ti preparo una proposta.</p>
+      <div class="project__actions">
+        {site.email && <a class="btn btn--big" href={`mailto:${site.email}`}>{site.email}</a>}
+        {site.whatsapp && <a class="btn btn--big btn--ghost" href={`https://wa.me/${site.whatsapp}`} target="_blank" rel="noopener">WhatsApp ↗</a>}
+        {!contactHref && <a class="btn btn--big" href={site.github} target="_blank" rel="noopener">GitHub ↗</a>}
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const chips = document.querySelectorAll<HTMLButtonElement>('[data-filter]');
+    const items = document.querySelectorAll<HTMLElement>('.project');
+    chips.forEach((chip) =>
+      chip.addEventListener('click', () => {
+        const f = chip.dataset.filter;
+        chips.forEach((c) => c.classList.toggle('is-active', c === chip));
+        items.forEach((it) => {
+          const show = f === 'all' || it.dataset.category === f;
+          it.hidden = !show;
+          if (show) it.classList.add('is-in');
+        });
+      }),
+    );
+  </script>
+</Base>
