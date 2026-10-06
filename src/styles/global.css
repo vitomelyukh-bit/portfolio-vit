@@ -1373,3 +1373,242 @@ em {
 .hello {
   display: table;
 }
+
+/* =========================================================
+   Guide, settori, articoli
+   ========================================================= */
+.crumbs {
+  color: var(--muted);
+  margin: 0 0 32px;
+}
+.crumbs a {
+  color: var(--muted);
+  text-decoration: none;
+}
+.crumbs a:hover {
+  color: var(--text);
+}
+.guide-filters {
+  margin: 48px 0 0;
+}
+.guide-list {
+  list-style: none;
+  padding: 0;
+  margin: 36px 0 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 18px;
+}
+.guide-list li[hidden] {
+  display: none;
+}
+.guide-list--3 {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+.guide-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 28px;
+  border-radius: var(--radius);
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  text-decoration: none;
+  transition: border-color 0.25s, transform 0.25s;
+}
+.guide-card:hover {
+  border-color: var(--lime);
+  transform: translateY(-3px);
+}
+.guide-card__meta {
+  color: var(--muted);
+  font-size: 11px;
+  text-transform: none;
+  letter-spacing: 0.02em;
+  margin-bottom: 14px;
+}
+.guide-card h2,
+.guide-card h3 {
+  font-size: 24px;
+  line-height: 1.2;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  margin: 0 0 12px;
+}
+.guide-card p {
+  color: var(--muted);
+  margin: 0 0 20px;
+  font-size: 15px;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.guide-card__go {
+  margin-top: auto;
+  color: var(--lime);
+  font-size: 15px;
+}
+.section-sub a {
+  color: var(--lime);
+  text-underline-offset: 3px;
+}
+
+/* Sector links on home */
+.sector-links {
+  list-style: none;
+  padding: 0;
+  margin: 40px 0 0;
+  border-top: 1px solid var(--line);
+}
+.sector-links a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 4px;
+  border-bottom: 1px solid var(--line);
+  text-decoration: none;
+  font-size: clamp(22px, 3vw, 36px);
+  letter-spacing: -0.02em;
+  transition: color 0.2s, padding 0.3s;
+}
+.sector-links a:hover {
+  color: var(--lime);
+  padding-left: 14px;
+}
+
+/* Sector hero */
+.hero--sector {
+  padding-top: clamp(110px, 14vw, 160px);
+}
+.hero__title--sm {
+  font-size: clamp(40px, 6.4vw, 96px);
+  max-width: 14em;
+}
+
+/* Article */
+.article {
+  max-width: 820px;
+}
+.article__title {
+  font-size: clamp(36px, 5.4vw, 64px);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  font-weight: 500;
+}
+.article__meta {
+  color: var(--muted);
+  margin: 22px 0 0;
+  text-transform: none;
+  letter-spacing: 0.02em;
+}
+.answer {
+  margin: 40px 0 8px;
+  padding: 24px 26px;
+  border-radius: var(--radius);
+  background: color-mix(in srgb, var(--lime) 8%, var(--bg-2));
+  border: 1px solid color-mix(in srgb, var(--lime) 30%, transparent);
+}
+.answer .mono {
+  color: var(--lime);
+  margin: 0 0 8px;
+}
+.answer p:last-child {
+  margin: 0;
+  font-size: 19px;
+  line-height: 1.5;
+}
+.prose {
+  font-size: 18px;
+  line-height: 1.7;
+  color: color-mix(in srgb, var(--text) 88%, var(--muted));
+}
+.prose h2 {
+  font-size: clamp(26px, 3vw, 34px);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  font-weight: 500;
+  color: var(--text);
+  margin: 56px 0 16px;
+}
+.prose h3 {
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--text);
+  margin: 36px 0 10px;
+}
+.prose p {
+  margin: 0 0 18px;
+}
+.prose a {
+  color: var(--lime);
+  text-underline-offset: 3px;
+}
+.prose ul,
+.prose ol {
+  padding-left: 22px;
+  margin: 0 0 22px;
+}
+.prose li {
+  margin-bottom: 8px;
+}
+.prose li::marker {
+  color: var(--lime);
+}
+.prose strong {
+  color: var(--text);
+  font-weight: 600;
+}
+.prose blockquote {
+  margin: 24px 0;
+  padding: 18px 22px;
+  border-left: 3px solid var(--lime);
+  background: var(--bg-2);
+  border-radius: 0 10px 10px 0;
+  font-style: italic;
+}
+.prose blockquote p:last-child {
+  margin: 0;
+}
+.article__faq {
+  margin-top: 64px;
+}
+.article__faq h2 {
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  margin: 0 0 18px;
+}
+.related {
+  margin-top: 64px;
+  padding: 28px;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+}
+.related ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.related li {
+  padding: 10px 0;
+  border-top: 1px solid var(--line);
+}
+.related li:first-child {
+  border-top: 0;
+}
+.related a {
+  color: var(--text);
+  text-decoration: none;
+}
+.related a:hover {
+  color: var(--lime);
+}
+.article__cta {
+  margin: 90px 0 100px;
+  display: grid;
+  gap: 32px;
+}
+.article__cta .section-title {
+  font-size: clamp(36px, 4.6vw, 56px);
+}

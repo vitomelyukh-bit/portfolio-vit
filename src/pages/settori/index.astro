@@ -1,0 +1,35 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { site } from '../../data/site';
+import { breadcrumbLd } from '../../lib/seo';
+
+const settori = (await getCollection('settori')).sort((a, b) => a.data.ordine - b.data.ordine);
+---
+
+<Base
+  title={`Siti web per settore · ${site.name}`}
+  description="Siti per ristoranti, centri estetici, studi professionali, artigiani e imprese di servizi: i problemi di ogni settore e come li risolvo."
+  jsonLd={[breadcrumbLd([['Home', '/'], ['Settori', '/settori/']])]}
+>
+  <main class="detail">
+    <a href="/" class="back mono">← Home</a>
+    <header class="detail__head">
+      <p class="eyebrow mono"><span class="dot"></span> Per settore</p>
+      <h1 class="detail__title">Settori</h1>
+      <p class="detail__tagline">Ogni attività perde clienti in un punto diverso. Ecco dove, settore per settore.</p>
+    </header>
+    <ul class="guide-list">
+      {settori.map((s) => (
+        <li>
+          <a href={`/settori/${s.id}/`} class="guide-card">
+            <span class="mono guide-card__meta">{s.data.chi}</span>
+            <h2>{s.data.h1}</h2>
+            <p>{s.data.intro}</p>
+            <span class="guide-card__go">Scopri →</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </main>
+</Base>

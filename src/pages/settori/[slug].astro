@@ -1,0 +1,136 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Mockup from '../../components/Mockup.astro';
+import LeadForm from '../../components/LeadForm.astro';
+import { projects } from '../../data/projects';
+import { breadcrumbLd, faqLd, serviceLd } from '../../lib/seo';
+
+export async function getStaticPaths() {
+  const settori = await getCollection('settori');
+  return settori.map((s) => ({ params: { slug: s.id }, props: { s } }));
+}
+
+const { s } = Astro.props;
+const d = s.data;
+const path = `/settori/${s.id}/`;
+const lavori = d.progetti.map((slug) => projects.find((p) => p.slug === slug)!).filter(Boolean);
+const guide = (await getCollection('guide'))
+  .filter((g) => g.data.settoriCorrelati?.includes(s.id))
+  .sort((a, b) => b.data.datePublished.localeCompare(a.data.datePublished));
+const jsonLd = [
+  serviceLd({ name: d.h1, description: d.description, path }),
+  breadcrumbLd([['Home', '/'], ['Settori', '/settori/'], [d.nome, path]]),
+  ...(d.faq?.length ? [faqLd(d.faq)] : []),
+];
+---
+
+<Base title={d.title} description={d.description} jsonLd={jsonLd}>
+  <main>
+    <section class="hero hero--sector">
+      <nav class="crumbs mono" aria-label="Percorso"><a href="/">Home</a> / <a href="/settori/">Settori</a></nav>
+      <h1 class="hero__title hero__title--sm" data-reveal>{d.h1}</h1>
+      <div class="hero__foot" data-reveal>
+        <div>
+          <p class="hero__lead">{d.intro}</p>
+          <div class="project__actions hero__ctas">
+            <a class="btn btn--big btn--lime" href="#contatti">Richiedi la proposta gratuita <span aria-hidden="true">→</span></a>
+          </div>
+          <p class="micro mono">Per: {d.chi}</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2 class="section-title" data-reveal>Dove perdi<br /><em>clienti oggi</em></h2>
+      <div class="pains">
+        {d.problemi.map((p, i) => (
+          <article class="pain" data-reveal style={`--d:${i * 80}ms`}>
+            <span class="mono pain__num">{String(i + 1).padStart(2, '0')}</span>
+            <h3>{p.titolo}</h3>
+            <p>{p.testo}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="block">
+      <h2 class="section-title" data-reveal>Cosa costruisco<br /><em>per risolverlo</em></h2>
+      <div class="skills__grid">
+        {d.soluzioni.map((x, i) => (
+          <article class="skill" data-reveal style={`--d:${i * 60}ms`}>
+            <span class="mono skill__num">{String(i + 1).padStart(2, '0')}</span>
+            <h3>{x.titolo}</h3>
+            <p>{x.testo}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    {lavori.length > 0 && (
+      <section class="work">
+        <div class="section-head">
+          <h2 class="section-title" data-reveal>Lavori<br /><em>in questo settore</em></h2>
+        </div>
+        <ol class="projects is-ready">
+          {lavori.map((p, i) => (
+            <li class="project" style={`--accent:${p.accent}`} data-reveal>
+              <div class="project__info">
+                <p class="project__meta mono">{p.location}</p>
+                <h3 class="project__name"><a href={`/progetti/${p.slug}/`}>{p.name}</a></h3>
+                <p class="project__sector">{p.sector}</p>
+                <p class="project__tagline">{p.tagline}</p>
+                <div class="project__actions">
+                  <a class="btn" href={`/progetti/${p.slug}/`}>Scopri il progetto <span aria-hidden="true">→</span></a>
+                  <a class="btn btn--ghost" href={p.url} target="_blank" rel="noopener">Visita il sito ↗</a>
+                </div>
+              </div>
+              <a href={`/progetti/${p.slug}/`} class="project__visual" tabindex="-1" aria-hidden="true">
+                <Mockup slug={p.slug} name={p.name} url={p.url} eager={i === 0} />
+              </a>
+            </li>
+          ))}
+        </ol>
+      </section>
+    )}
+
+    {guide.length > 0 && (
+      <section class="block">
+        <h2 class="section-title" data-reveal>Guide<br /><em>per il tuo settore</em></h2>
+        <ul class="guide-list">
+          {guide.map((g) => (
+            <li>
+              <a href={`/guide/${g.id}/`} class="guide-card">
+                <h3>{g.data.h1}</h3>
+                <p>{g.data.rispostaBreve}</p>
+                <span class="guide-card__go">Leggi la guida →</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    {d.faq?.length && (
+      <section class="block faq">
+        <h2 class="section-title" data-reveal>Domande<br /><em>frequenti</em></h2>
+        <div class="faq__list">
+          {d.faq.map((f) => (
+            <details class="faq__item">
+              <summary>{f.domanda}<span aria-hidden="true">+</span></summary>
+              <p>{f.risposta}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <section id="contatti" class="contact2">
+      <div class="contact2__intro" data-reveal>
+        <p class="eyebrow mono"><span class="dot"></span> Proposta gratuita</p>
+        <h2 class="section-title">Raccontami la tua attività.<br /><em>Ti dico come la sistemerei.</em></h2>
+      </div>
+      <div data-reveal><LeadForm /></div>
+    </section>
+  </main>
+</Base>

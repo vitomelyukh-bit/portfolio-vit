@@ -4,12 +4,16 @@ import Mockup from '../components/Mockup.astro';
 import LeadForm from '../components/LeadForm.astro';
 import { projects, categories, type Category } from '../data/projects';
 import { site } from '../data/site';
+import { getCollection } from 'astro:content';
+import { businessLd, faqLd, personLd, websiteLd } from '../lib/seo';
 
 const FEATURED = 6;
 const used = Object.keys(categories).filter((c) => projects.some((p) => p.category === c)) as Category[];
 const ecommerce = projects.filter((p) => p.category === 'ecommerce').length;
 const sectors = new Set(projects.map((p) => p.sector)).size;
 const byslug = Object.fromEntries(projects.map((p) => [p.slug, p]));
+const settori = (await getCollection('settori')).sort((a, b) => a.data.ordine - b.data.ordine);
+const ultimeGuide = (await getCollection('guide')).sort((a, b) => b.data.datePublished.localeCompare(a.data.datePublished)).slice(0, 3);
 
 const pains = [
   {
@@ -90,6 +94,7 @@ const faqs = [
 <Base
   title={`${site.name} · Siti web che portano clienti alle attività locali`}
   description="Siti, e-commerce e prenotazioni online per attività locali, progettati e sviluppati da una sola persona. Richiedi una proposta gratuita."
+  jsonLd={[websiteLd(), personLd(), businessLd(), faqLd(faqs)]}
 >
   <main>
     <!-- HERO -->
@@ -180,6 +185,19 @@ const faqs = [
       </div>
     </section>
 
+    <!-- SECTORS -->
+    <section class="block">
+      <div class="section-head section-head--plain">
+        <h2 class="section-title" data-reveal>Per il tuo<br /><em>settore</em></h2>
+        <p class="section-sub" data-reveal>Ogni attività perde clienti in un punto diverso. Scegli la tua.</p>
+      </div>
+      <ul class="sector-links" data-reveal>
+        {settori.map((x) => (
+          <li><a href={`/settori/${x.id}/`}><span>{x.data.nome}</span><span aria-hidden="true">→</span></a></li>
+        ))}
+      </ul>
+    </section>
+
     <!-- WORK -->
     <section id="lavori" class="work">
       <div class="section-head">
@@ -263,6 +281,27 @@ const faqs = [
         </div>
       </div>
     </section>
+
+    <!-- GUIDES -->
+    {ultimeGuide.length > 0 && (
+      <section class="block">
+        <div class="section-head section-head--plain">
+          <h2 class="section-title" data-reveal>Guide<br /><em>per titolari</em></h2>
+          <p class="section-sub" data-reveal>Problemi veri e come risolverli, anche da solo. <a href="/guide/">Tutte le guide →</a></p>
+        </div>
+        <ul class="guide-list guide-list--3">
+          {ultimeGuide.map((g) => (
+            <li data-reveal>
+              <a href={`/guide/${g.id}/`} class="guide-card">
+                <h3>{g.data.h1}</h3>
+                <p>{g.data.rispostaBreve}</p>
+                <span class="guide-card__go">Leggi la guida →</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
 
     <!-- FAQ -->
     <section id="faq" class="block faq">

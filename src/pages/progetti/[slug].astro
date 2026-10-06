@@ -2,6 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import { projects, categories, type Project } from '../../data/projects';
 import { site } from '../../data/site';
+import { breadcrumbLd, projectLd } from '../../lib/seo';
 
 export function getStaticPaths() {
   return projects.map((p, i) => ({
@@ -12,9 +13,19 @@ export function getStaticPaths() {
 
 const { project: p, next } = Astro.props as { project: Project; next: Project };
 const host = new URL(p.url).hostname.replace(/^www\./, '');
+const path = `/progetti/${p.slug}/`;
+const jsonLd = [
+  projectLd({ name: p.name, description: p.intro, url: p.url, path }),
+  breadcrumbLd([['Home', '/'], ['Lavori', '/#lavori'], [p.name, path]]),
+];
 ---
 
-<Base title={`${p.name} · ${site.name}`} description={p.tagline} image={`/shots/${p.slug}/desktop.webp`}>
+<Base
+  title={`${p.name}: ${p.sector.toLowerCase()} · ${site.name}`}
+  description={p.tagline}
+  image={`/shots/${p.slug}/desktop.webp`}
+  jsonLd={jsonLd}
+>
   <main class="detail" style={`--accent:${p.accent}`}>
     <a href="/#lavori" class="back mono">← Tutti i lavori</a>
 

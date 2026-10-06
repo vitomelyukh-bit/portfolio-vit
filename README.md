@@ -39,3 +39,14 @@ Senza `RESEND_API_KEY` o `LEAD_TO_EMAIL` il form mostra un errore e propone What
 
 - `/?a=Pizzeria%20Mario` mostra un saluto personalizzato in alto e precompila il nome dell'attività nel form
 - `ref`, `utm_source`, `utm_campaign` vengono riportati nell'email della richiesta (es. `/?a=Pizzeria%20Mario&utm_source=bot&utm_campaign=ristoranti-roma`)
+
+## SEO e contenuti
+
+- `content/settori/*.md`: landing verticali (`/settori/<slug>/`)
+- `content/guide/*.md`: guide sui problemi dei titolari (`/guide/<slug>/`)
+- `content-engine/WRITING.md`: regole di scrittura (le segue la routine)
+- `content-engine/topics.json`: backlog degli argomenti
+- `content-engine/check-content.mjs`: controlli obbligatori (`node content-engine/check-content.mjs`)
+- `content-engine/ROUTINE.md`: prompt della routine giornaliera
+
+Sono generati in automatico: `sitemap-index.xml`, `robots.txt` (crawler AI consentiti), `llms.txt`, canonical, Open Graph e dati strutturati JSON-LD (Person, ProfessionalService, WebSite, FAQPage, Article, Service, BreadcrumbList, CreativeWork).

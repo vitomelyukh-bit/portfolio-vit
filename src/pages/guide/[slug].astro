@@ -1,0 +1,82 @@
+---
+import { getCollection, getEntry, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import LeadForm from '../../components/LeadForm.astro';
+import { projects } from '../../data/projects';
+import { site } from '../../data/site';
+import { articleLd, breadcrumbLd, faqLd } from '../../lib/seo';
+
+export async function getStaticPaths() {
+  const guide = await getCollection('guide');
+  return guide.map((g) => ({ params: { slug: g.id }, props: { g } }));
+}
+
+const { g } = Astro.props;
+const d = g.data;
+const { Content } = await render(g);
+const path = `/guide/${g.id}/`;
+const correlate = (await Promise.all((d.guideCorrelate ?? []).map((s) => getEntry('guide', s)))).filter(Boolean);
+const settori = (await Promise.all((d.settoriCorrelati ?? []).map((s) => getEntry('settori', s)))).filter(Boolean);
+const progetti = projects.filter((p) => d.progettiCorrelati?.includes(p.slug));
+const fmt = (x: string) => new Date(x).toLocaleDateString('it-IT', { day: 'numeric', month: 'long', year: 'numeric' });
+const jsonLd = [
+  articleLd({ h1: d.h1, description: d.description, path, datePublished: d.datePublished, dateModified: d.dateModified }),
+  breadcrumbLd([['Home', '/'], ['Guide', '/guide/'], [d.h1, path]]),
+  ...(d.faq?.length ? [faqLd(d.faq)] : []),
+];
+---
+
+<Base title={d.title} description={d.description} jsonLd={jsonLd} type="article">
+  <main class="detail article">
+    <nav class="crumbs mono" aria-label="Percorso">
+      <a href="/">Home</a> / <a href="/guide/">Guide</a>
+    </nav>
+    <header class="article__head">
+      <h1 class="article__title">{d.h1}</h1>
+      <p class="mono article__meta">
+        {site.name} · <time datetime={d.datePublished}>{fmt(d.datePublished)}</time>
+        {d.dateModified !== d.datePublished && <> · aggiornata il <time datetime={d.dateModified}>{fmt(d.dateModified)}</time></>}
+      </p>
+    </header>
+
+    <aside class="answer">
+      <p class="mono">In breve</p>
+      <p>{d.rispostaBreve}</p>
+    </aside>
+
+    <div class="prose">
+      <Content />
+    </div>
+
+    {d.faq?.length && (
+      <section class="article__faq">
+        <h2>Domande frequenti</h2>
+        {d.faq.map((f) => (
+          <details class="faq__item">
+            <summary>{f.domanda}<span aria-hidden="true">+</span></summary>
+            <p>{f.risposta}</p>
+          </details>
+        ))}
+      </section>
+    )}
+
+    {(correlate.length > 0 || settori.length > 0 || progetti.length > 0) && (
+      <section class="related">
+        <h2 class="mono label">Continua a leggere</h2>
+        <ul>
+          {correlate.map((c) => <li><a href={`/guide/${c!.id}/`}>{c!.data.h1}</a></li>)}
+          {settori.map((s) => <li><a href={`/settori/${s!.id}/`}>Siti per {s!.data.nome.toLowerCase()}</a></li>)}
+          {progetti.map((p) => <li><a href={`/progetti/${p.slug}/`}>Progetto: {p.name}</a></li>)}
+        </ul>
+      </section>
+    )}
+
+    <section class="article__cta" id="contatti">
+      <div>
+        <h2 class="section-title">Preferisci che<br /><em>lo faccia io?</em></h2>
+        <p class="section-sub">Raccontami la tua attività: ti ricontatto di persona e ti preparo una proposta gratuita.</p>
+      </div>
+      <LeadForm />
+    </section>
+  </main>
+</Base>

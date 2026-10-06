@@ -6,8 +6,13 @@ interface Props {
   title: string;
   description: string;
   image?: string;
+  /** Oggetti JSON-LD da inserire nella pagina */
+  jsonLd?: object[];
+  type?: 'website' | 'article';
 }
-const { title, description, image = '/og.webp' } = Astro.props;
+const { title, description, image = '/og.webp', jsonLd = [], type = 'website' } = Astro.props;
+const path = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
+const canonical = new URL(path, Astro.site).toString();
 ---
 
 <!doctype html>
@@ -19,8 +24,15 @@ const { title, description, image = '/og.webp' } = Astro.props;
     <meta name="description" content={description} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:locale" content="it_IT" />
     <meta property="og:image" content={new URL(image, Astro.site)} />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={type} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    {jsonLd.map((j) => <script type="application/ld+json" set:html={JSON.stringify(j)} />)}
     <meta name="theme-color" content="#0d0d0c" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -38,7 +50,8 @@ const { title, description, image = '/og.webp' } = Astro.props;
       </a>
       <nav class="nav__links">
         <a href="/#lavori">Lavori</a>
-        <a href="/#metodo">Come lavoriamo</a>
+        <a href="/settori">Settori</a>
+        <a href="/guide">Guide</a>
         <a href="/#faq">FAQ</a>
         <a href="/#contatti" class="nav__cta">Richiedi una proposta</a>
       </nav>

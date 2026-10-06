@@ -1,0 +1,280 @@
+{
+  "nota": "Backlog delle guide di vitastrategy.it. Tre temi: 'sito', 'clienti', 'settore'. Ogni giorno una guida 'settore' e una generale (alternando 'sito' e 'clienti'). Vedi content-engine/WRITING.md. La routine prende il primo 'da-fare' del tema non sovrapposto a guide esistenti e lo segna 'fatto' con slug e data.",
+  "argomenti": [
+    {
+      "titolo": "Perché il mio sito non porta clienti?",
+      "tema": "sito",
+      "stato": "fatto",
+      "slug": "perche-sito-non-porta-clienti",
+      "data": "2026-10-06"
+    },
+    {
+      "titolo": "Come far prenotare online i clienti senza passare le serate su WhatsApp",
+      "tema": "clienti",
+      "stato": "fatto",
+      "slug": "come-ricevere-prenotazioni-online",
+      "data": "2026-10-06"
+    },
+    {
+      "titolo": "Il sito del ristorante: cosa deve avere per far prenotare",
+      "tema": "settore",
+      "settore": "ristoranti",
+      "stato": "fatto",
+      "slug": "sito-ristorante-cosa-deve-avere",
+      "data": "2026-10-06"
+    },
+    {
+      "titolo": "Quanto costa un sito per un'attività locale e da cosa dipende il prezzo",
+      "tema": "sito",
+      "stato": "da-fare"
+    },
+    {
+      "titolo": "Modulo di preventivo: quali domande fare per ricevere richieste serie",
+      "tema": "clienti",
+      "stato": "da-fare"
+    },
+    {
+      "titolo": "Prenotazioni online per un centro estetico: cosa serve davvero",
+      "tema": "settore",
+      "settore": "centri-estetici",
+      "stato": "da-fare"
+    },
+    {
+      "titolo": "Rifare il sito o sistemare quello che c'è? Come capirlo",
+      "tema": "sito",
+      "stato": "da-fare"
+    },
+    {
+      "titolo": "Pulsante WhatsApp sul sito: come usarlo senza farsi sommergere di messaggi",
+      "tema": "clienti",
+      "stato": "da-fare"
+    },
+    {
+      "titolo": "Sito per uno studio legale: cosa scrivere per ricevere le richieste giuste",
+      "tema": "settore",
+      "settore": "studi-professionali",
+      "stato": "da-fare"
+    },
+    {
+      "titolo": "Il mio sito è lento: come accorgersene e perché ti fa perdere clienti",
+      "tema": "sito",
+      "stato": "da-fare"
+    },
+    {
+      "titolo": "Clienti che non si presentano: acconti, promemoria e regole di disdetta",
+      "tema": "clienti",
+      "stato": "da-fare"
+    },
+    {
+      "titolo": "Aprire un e-commerce da artigiano: da dove partire",
+      "tema": "settore",
+      "settore": "e-commerce",
+      "stato": "da-fare"
+    },
+    {
+      "titolo": "Cosa deve esserci nella home page di un'attività locale",
+      "tema": "sito",
+      "stato": "da-fare"
+    },
+    {
+      "titolo": "Gift card online: come venderle dal sito della tua attività",
+      "tema": "clienti",
+      "stato": "da-fare"
+    },
+    {
+      "titolo": "Sito per un'impresa di traslochi: come ricevere preventivi completi",
+      "tema": "settore",
+      "settore": "imprese-servizi",
+      "stato": "da-fare"
+    },
+    {
+      "titolo": "Il sito non si vede bene dal telefono: cosa controllare",
+      "tema": "sito",
+      "stato": "da-fare"
+    },
+    {
+      "titolo": "Scheda Google Maps e sito: perché devono dire le stesse cose",
+      "tema": "clienti",
+      "stato": "da-fare"
+    },
+    {
+      "titolo": "Menù online del ristorante: PDF, foto o pagina del sito?",
+      "tema": "settore",
+      "settore": "ristoranti",
+      "stato": "da-fare"
+    },
+    {
+      "titolo": "Dominio e hosting: cosa sono e a chi devono essere intestati",
+      "tema": "sito",
+      "stato": "da-fare"
+    },
+    {
+      "titolo": "Recensioni sul sito: come mostrarle senza violare le regole",
+      "tema": "clienti",
+      "stato": "da-fare"
+    },
+    {
+      "titolo": "Listino prezzi sul sito del centro estetico: metterlo o no?",
+      "tema": "settore",
+      "settore": "centri-estetici",
+      "stato": "da-fare"
+    },
+    {
+      "titolo": "Il web designer è sparito: come riprendere il controllo del sito",
+      "tema": "sito",
+      "stato": "da-fare"
+    },
+    {
+      "titolo": "Rispondere alle richieste di preventivo prima della concorrenza",
+      "tema": "clienti",
+      "stato": "da-fare"
+    },
+    {
+      "titolo": "Sito per commercialisti: contenuti che portano clienti senza scrivere ogni giorno",
+      "tema": "settore",
+      "settore": "studi-professionali",
+      "stato": "da-fare"
+    },
+    {
+      "titolo": "Sito fatto da solo con un costruttore online o da un professionista: pro e contro",
+      "tema": "sito",
+      "stato": "da-fare"
+    },
+    {
+      "titolo": "Vendere online partendo da Instagram: quando serve un e-commerce",
+      "tema": "clienti",
+      "stato": "da-fare"
+    },
+    {
+      "titolo": "Spedizioni nell'e-commerce di un piccolo produttore: come presentarle",
+      "tema": "settore",
+      "settore": "e-commerce",
+      "stato": "da-fare"
+    },
+    {
+      "titolo": "Il mio sito non compare su Google: le cause più comuni",
+      "tema": "sito",
+      "stato": "da-fare"
+    },
+    {
+      "titolo": "Clienti che chiedono solo il prezzo: come filtrarli con il sito",
+      "tema": "clienti",
+      "stato": "da-fare"
+    },
+    {
+      "titolo": "Sito per un'impresa edile: come mostrare i lavori fatti",
+      "tema": "settore",
+      "settore": "imprese-servizi",
+      "stato": "da-fare"
+    },
+    {
+      "titolo": "Chi aggiorna il sito dopo che è online? Come non restare bloccati",
+      "tema": "sito",
+      "stato": "da-fare"
+    },
+    {
+      "titolo": "Come capire da dove arrivano i clienti che ti contattano dal sito",
+      "tema": "clienti",
+      "stato": "da-fare"
+    },
+    {
+      "titolo": "Ordini da asporto dal sito del ristorante: come organizzarli",
+      "tema": "settore",
+      "settore": "ristoranti",
+      "stato": "da-fare"
+    },
+    {
+      "titolo": "Pagina Chi siamo: cosa scrivere per farsi scegliere",
+      "tema": "sito",
+      "stato": "da-fare"
+    },
+    {
+      "titolo": "Newsletter per un'attività locale: ha ancora senso?",
+      "tema": "clienti",
+      "stato": "da-fare"
+    },
+    {
+      "titolo": "Sito per uno studio di tatuaggi: come presentare artisti e stili",
+      "tema": "settore",
+      "settore": "centri-estetici",
+      "stato": "da-fare"
+    },
+    {
+      "titolo": "Privacy e cookie sul sito di un'attività: cosa serve davvero",
+      "tema": "sito",
+      "stato": "da-fare"
+    },
+    {
+      "titolo": "Pagamenti online sul sito: quando conviene farli e come",
+      "tema": "clienti",
+      "stato": "da-fare"
+    },
+    {
+      "titolo": "Consulenza legale online: come proporla dal sito dello studio",
+      "tema": "settore",
+      "settore": "studi-professionali",
+      "stato": "da-fare"
+    },
+    {
+      "titolo": "Landing page o sito completo: cosa serve alla tua attività",
+      "tema": "sito",
+      "stato": "da-fare"
+    },
+    {
+      "titolo": "Messaggi automatici di conferma e promemoria: cosa scrivere",
+      "tema": "clienti",
+      "stato": "da-fare"
+    },
+    {
+      "titolo": "Vendere all'estero: quando tradurre l'e-commerce",
+      "tema": "settore",
+      "settore": "e-commerce",
+      "stato": "da-fare"
+    },
+    {
+      "titolo": "Foto per il sito: farle col telefono o chiamare un fotografo?",
+      "tema": "sito",
+      "stato": "da-fare"
+    },
+    {
+      "titolo": "Il sito che lavora di notte: cosa può fare al posto tuo fuori orario",
+      "tema": "clienti",
+      "stato": "da-fare"
+    },
+    {
+      "titolo": "Sito per un'impresa di pulizie: come farsi scegliere dalle aziende",
+      "tema": "settore",
+      "settore": "imprese-servizi",
+      "stato": "da-fare"
+    },
+    {
+      "titolo": "Testi del sito: come spiegare cosa fai in modo che il cliente capisca subito",
+      "tema": "sito",
+      "stato": "da-fare"
+    },
+    {
+      "titolo": "Feste private ed eventi: come promuoverli sul sito del locale",
+      "tema": "settore",
+      "settore": "ristoranti",
+      "stato": "da-fare"
+    },
+    {
+      "titolo": "Gift card per centri estetici e massaggi: come venderle online",
+      "tema": "settore",
+      "settore": "centri-estetici",
+      "stato": "da-fare"
+    },
+    {
+      "titolo": "Sito per disinfestazione: come farsi chiamare nelle emergenze",
+      "tema": "settore",
+      "settore": "imprese-servizi",
+      "stato": "da-fare"
+    },
+    {
+      "titolo": "News automatiche per lo studio: come funzionano e cosa controllare",
+      "tema": "settore",
+      "settore": "studi-professionali",
+      "stato": "da-fare"
+    }
+  ]
+}

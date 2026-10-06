@@ -1,0 +1,54 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { site } from '../../data/site';
+import { breadcrumbLd } from '../../lib/seo';
+
+const temi = { sito: 'Il tuo sito', clienti: 'Trovare e gestire clienti', settore: 'Per settore' } as const;
+const guide = (await getCollection('guide')).sort((a, b) => b.data.datePublished.localeCompare(a.data.datePublished));
+const fmt = (d: string) => new Date(d).toLocaleDateString('it-IT', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+
+<Base
+  title={`Guide per titolari: sito, clienti e prenotazioni · ${site.name}`}
+  description="Guide pratiche per titolari di attività locali: perché il sito non porta clienti, prenotazioni online, preventivi, Google Maps. Senza gergo."
+  jsonLd={[breadcrumbLd([['Home', '/'], ['Guide', '/guide/']])]}
+>
+  <main class="detail">
+    <a href="/" class="back mono">← Home</a>
+    <header class="detail__head">
+      <p class="eyebrow mono"><span class="dot"></span> Guide per titolari</p>
+      <h1 class="detail__title">Guide</h1>
+      <p class="detail__tagline">Problemi veri di chi ha un’attività, e come risolverli. Anche da solo.</p>
+    </header>
+
+    <div class="filters guide-filters" role="group" aria-label="Filtra per tema">
+      <button class="chip is-active" data-tema="all">Tutte</button>
+      {Object.entries(temi).map(([k, v]) => <button class="chip" data-tema={k}>{v}</button>)}
+    </div>
+
+    <ul class="guide-list">
+      {guide.map((g) => (
+        <li data-tema={g.data.tema}>
+          <a href={`/guide/${g.id}/`} class="guide-card">
+            <span class="mono guide-card__meta">{temi[g.data.tema]} · {fmt(g.data.datePublished)}</span>
+            <h2>{g.data.h1}</h2>
+            <p>{g.data.rispostaBreve}</p>
+            <span class="guide-card__go">Leggi la guida →</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </main>
+
+  <script>
+    const chips = document.querySelectorAll<HTMLButtonElement>('[data-tema].chip');
+    const items = document.querySelectorAll<HTMLElement>('.guide-list li');
+    chips.forEach((c) =>
+      c.addEventListener('click', () => {
+        chips.forEach((x) => x.classList.toggle('is-active', x === c));
+        items.forEach((i) => (i.hidden = c.dataset.tema !== 'all' && i.dataset.tema !== c.dataset.tema));
+      }),
+    );
+  </script>
+</Base>
