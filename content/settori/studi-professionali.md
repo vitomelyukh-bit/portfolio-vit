@@ -1,7 +1,7 @@
 ---
 nome: Studi professionali
 ordine: 3
-title: Sito web per avvocati, commercialisti e consulenti · Vitaliy Omelyukh
+title: Sito web per avvocati, commercialisti e consulenti · VitaStrategy
 description: "Sito per studi legali, commercialisti e consulenti del lavoro: fiducia, richieste qualificate, area clienti e news aggiornate senza fatica."
 h1: Sito web per avvocati, commercialisti e consulenti
 intro: "Un professionista si sceglie per fiducia. Prima di chiamarti, il potenziale cliente vuole capire chi sei, di cosa ti occupi e come lavori. Un sito vuoto o fermo da anni comunica l'esatto contrario."

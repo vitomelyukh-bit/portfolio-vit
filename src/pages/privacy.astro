@@ -13,25 +13,25 @@ import { site } from '../data/site';
     </p>
     <h2>Titolare del trattamento</h2>
     <p>
-      {site.name}{site.email && <>, contattabile all’indirizzo <a href={`mailto:${site.email}`}>{site.email}</a></>}
+      {site.founder} (titolare di {site.name}){site.email && <>, contattabile all’indirizzo <a href={`mailto:${site.email}`}>{site.email}</a></>}
       {site.whatsapp && <>{site.email ? ' o' : ', contattabile'} su WhatsApp al <a href={`https://wa.me/${site.whatsapp}`}>+{site.whatsapp}</a></>}.
     </p>
     <h2>Quali dati raccolgo e perché</h2>
     <p>
-      Nome, nome dell’attività, telefono e/o email, tipo di servizio, budget indicativo ed eventuale messaggio. Li uso
+      Nome, nome dell’attività, telefono e/o email, tipo di servizio, budget indicativo ed eventuale messaggio. Li usiamo
       solo per risponderti e prepararti una proposta: la base giuridica è la tua richiesta (misure precontrattuali,
       art. 6.1.b GDPR).
     </p>
     <h2>Come vengono trattati</h2>
     <p>
-      La richiesta mi arriva via email tramite il servizio Resend. Il sito è ospitato su Vercel. Non vendo né cedo i tuoi
-      dati a terzi e non li uso per newsletter senza il tuo consenso.
+      La richiesta ci arriva via email tramite il servizio Resend. Il sito è ospitato su Vercel. Non vendiamo né cediamo i tuoi
+      dati a terzi e non li usiamo per newsletter senza il tuo consenso.
     </p>
     <h2>Per quanto tempo</h2>
-    <p>Conservo i dati per il tempo necessario a gestire la richiesta e, se non nasce una collaborazione, al massimo 12 mesi.</p>
+    <p>Conserviamo i dati per il tempo necessario a gestire la richiesta e, se non nasce una collaborazione, al massimo 12 mesi.</p>
     <h2>I tuoi diritti</h2>
     <p>
-      Puoi chiedere in qualsiasi momento di accedere ai tuoi dati, correggerli o cancellarli, scrivendomi ai recapiti
+      Puoi chiedere in qualsiasi momento di accedere ai tuoi dati, correggerli o cancellarli, scrivendoci ai recapiti
       indicati sopra. Puoi anche proporre reclamo al Garante per la protezione dei dati personali.
     </p>
   </main>

@@ -1612,3 +1612,33 @@ em {
 .article__cta .section-title {
   font-size: clamp(36px, 4.6vw, 56px);
 }
+
+/* Logo */
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.logo__mark {
+  width: 34px;
+  height: 34px;
+}
+.logo__word {
+  font-size: 19px;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+}
+.logo__word b {
+  font-weight: 650;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+.logo__word[aria-hidden] {
+  display: inline;
+}

@@ -50,7 +50,7 @@ export const POST: APIRoute = async ({ request }) => {
     ['Provenienza', [lead.ref && `ref=${lead.ref}`, lead.utm_source && `utm_source=${lead.utm_source}`, lead.utm_campaign && `utm_campaign=${lead.utm_campaign}`].filter(Boolean).join(' · ')],
     ['Pagina', lead.pagina],
   ];
-  const html = `<h2 style="font-family:sans-serif">Nuova richiesta dal portfolio</h2><table style="font-family:sans-serif;border-collapse:collapse">${rows
+  const html = `<h2 style="font-family:sans-serif">Nuova richiesta da vitastrategy.it</h2><table style="font-family:sans-serif;border-collapse:collapse">${rows
     .filter(([, v]) => v)
     .map(([k, v]) => `<tr><td style="padding:6px 14px 6px 0;color:#666;vertical-align:top">${k}</td><td style="padding:6px 0;white-space:pre-wrap">${esc(v)}</td></tr>`)
     .join('')}</table>`;
@@ -71,7 +71,7 @@ export const POST: APIRoute = async ({ request }) => {
 
   if (!res.ok) {
     console.error('[lead] Resend ha risposto', res.status, await res.text());
-    return json({ ok: false, error: 'Invio non riuscito. Riprova o scrivimi su WhatsApp.' }, 502);
+    return json({ ok: false, error: 'Invio non riuscito. Riprova o scrivici su WhatsApp.' }, 502);
   }
   return json({ ok: true });
 };

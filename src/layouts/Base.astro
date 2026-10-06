@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import { site } from '../data/site';
+import Logo from '../components/Logo.astro';
 
 interface Props {
   title: string;
@@ -45,8 +46,7 @@ const canonical = new URL(path, Astro.site).toString();
   <body>
     <header class="nav">
       <a href="/" class="nav__logo" aria-label={`${site.name}, home`}>
-        <span class="nav__mark">{site.initials}</span>
-        <span class="nav__name">{site.name}</span>
+        <Logo />
       </a>
       <nav class="nav__links">
         <a href="/#lavori">Lavori</a>
@@ -60,8 +60,8 @@ const canonical = new URL(path, Astro.site).toString();
     <slot />
 
     <footer class="footer">
-      <span>© {new Date().getFullYear()} {site.name}</span>
-      <span class="mono">Progettato e sviluppato da me, come tutti i siti qui dentro.</span>
+      <span>© {new Date().getFullYear()} {site.name} · {site.tagline}</span>
+      <span class="mono">Progettato e sviluppato da noi, come tutti i siti qui dentro.</span>
       <a href="/privacy" class="mono">Privacy</a>
     </footer>
 

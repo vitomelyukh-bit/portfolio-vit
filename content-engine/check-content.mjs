@@ -28,7 +28,9 @@ const err = (file, msg) => errors.push(`${file}: ${msg}`);
 const PREZZO = /(€\s?\d|\d\s?€|\d+\s?euro\b|\bEUR\b)/i;
 const PERCENTUALE = /\d+([.,]\d+)?\s?%|\bper cento\b/i;
 const SOSPETTI = /\b(secondo (uno|un) studio|una ricerca (ha|di)|i dati (mostrano|dicono)|statistiche (dicono|mostrano)|studi dimostrano)\b/i;
-const VENDITA = /\b(garantisco|garantiamo|risultati garantiti|primo su google|prima pagina garantita|i miei clienti (ottengono|hanno ottenuto)|un mio cliente|i nostri clienti)\b/i;
+const VENDITA = /\b(garantisco|garantiamo|risultati garantiti|primo su google|prima pagina garantita|i (miei|nostri) clienti (ottengono|hanno ottenuto)|un (mio|nostro) cliente ha)\b/i;
+// Voce del marchio: plurale ("noi"), mai prima persona singolare
+const PRIMA_PERSONA = /\b(raccontami|scrivimi|contattami|ti preparo|ti ricontatto|ti rispondo|ho realizzato|ho costruito|ne parlo|lo faccio io)\b/i;
 const RIEMPITIVI = /\b(in questo articolo vedremo|in conclusione|nel mondo di oggi|al giorno d'oggi)\b/i;
 const CITTA = ['roma', 'milano', 'napoli', 'torino', 'palermo', 'genova', 'bologna', 'firenze', 'bari', 'catania', 'venezia', 'verona', 'messina', 'padova', 'trieste', 'brescia', 'parma', 'taranto', 'prato', 'modena', 'reggio', 'perugia', 'livorno', 'ravenna', 'cagliari', 'foggia', 'rimini', 'salerno', 'ferrara', 'sassari', 'latina', 'monza', 'pescara', 'bergamo', 'vicenza', 'trento', 'bolzano', 'lecce'];
 const LINK_FISSI = new Set(['/', '/#contatti', '/#lavori', '/#faq', '/guide', '/settori', '/privacy']);
@@ -57,9 +59,10 @@ const checkLinks = (x, body) => {
 for (const x of [...settori, ...guide]) {
   const t = testo(x);
   if (VENDITA.test(t)) err(x.file, `linguaggio da vendita: "${t.match(VENDITA)[0]}"`);
+  if (PRIMA_PERSONA.test(t)) err(x.file, `prima persona singolare "${t.match(PRIMA_PERSONA)[0]}": il marchio parla al plurale (noi)`);
   if (RIEMPITIVI.test(t)) err(x.file, `frase riempitiva: "${t.match(RIEMPITIVI)[0]}"`);
   if (!x.data.title || x.data.title.length > 70) err(x.file, `title mancante o oltre 70 caratteri (${x.data.title?.length ?? 0})`);
-  if (!/ · Vitaliy Omelyukh$/.test(x.data.title ?? '')) err(x.file, `il title deve finire con " · Vitaliy Omelyukh"`);
+  if (!/ · VitaStrategy$/.test(x.data.title ?? '')) err(x.file, `il title deve finire con " · VitaStrategy"`);
   if (!x.data.description || x.data.description.length > 170) err(x.file, `description mancante o oltre 170 caratteri (${x.data.description?.length ?? 0})`);
   checkLinks(x, x.body);
 }

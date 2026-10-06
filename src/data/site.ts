@@ -1,11 +1,12 @@
-// Dati personali: modifica qui nome, ruolo e contatti.
+// Dati del marchio: modifica qui nome, ruolo e contatti.
 // Se email o whatsapp sono vuoti, il relativo bottone non viene mostrato.
 export const site = {
-  name: 'Vitaliy Omelyukh',
-  initials: 'VO',
-  role: 'Web developer & designer',
+  name: 'VitaStrategy',
+  tagline: 'Siti web e strategie digitali per attività locali',
+  // Titolare (privacy, dati strutturati)
+  founder: 'Vitaliy Omelyukh',
   city: 'Roma',
   email: '',
-  whatsapp: '393511781799', // es. '393331234567' (solo numeri, con prefisso)
+  whatsapp: '393511781799', // solo numeri, con prefisso
   github: 'https://github.com/vitomelyukh-bit',
 };

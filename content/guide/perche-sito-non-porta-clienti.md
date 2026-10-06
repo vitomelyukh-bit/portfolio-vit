@@ -1,5 +1,5 @@
 ---
-title: "Perché il mio sito non porta clienti? · Vitaliy Omelyukh"
+title: "Perché il mio sito non porta clienti? · VitaStrategy"
 description: "Hai un sito ma il telefono non squilla? Le cause più comuni, da come si vede sul telefono a cosa manca nei testi, e come sistemarle una per una."
 h1: "Perché il mio sito non porta clienti?"
 rispostaBreve: "Quasi sempre il problema non è il tuo lavoro ma il sito: non dice in pochi secondi cosa fai, dove e come contattarti, oppure nessuno lo trova. Controlla prima come si vede dal telefono, poi cosa c'è scritto in alto nella home, poi se compari su Google quando cerchi il tuo servizio in zona. Sono tre controlli che puoi fare da solo in dieci minuti."
@@ -18,7 +18,7 @@ faq:
 
 ## Il sito c'è, ma il telefono non squilla
 
-È una delle frasi che sento più spesso dai titolari. Hai pagato un sito, magari anche bello, e dopo mesi nessuno ti dice "ti ho trovato su internet". I clienti nuovi arrivano dal passaparola, come prima.
+È una delle frasi che sentiamo più spesso dai titolari. Hai pagato un sito, magari anche bello, e dopo mesi nessuno ti dice "ti ho trovato su internet". I clienti nuovi arrivano dal passaparola, come prima.
 
 Il motivo raramente è uno solo. Di solito il sito ha uno di questi problemi: chi lo apre non capisce subito cosa fai, non trova come contattarti, oppure non lo apre proprio nessuno perché su Google non compari. Vediamoli uno per uno, partendo da quelli che si sistemano più in fretta.
 
@@ -50,7 +50,7 @@ Un altro classico: il numero di telefono c'è, ma in fondo alla pagina "Contatti
 
 Chi ha un problema vuole risolverlo subito. Metti il modo di contattarti in ogni pagina e rendilo cliccabile: un tocco per chiamare, un tocco per scrivere su WhatsApp, oppure un pulsante per prenotare. Se usi un modulo, chiedi solo quello che ti serve davvero per rispondere.
 
-Se gestisci appuntamenti, puoi anche togliere del tutto il passaggio della telefonata: ne parlo in [come far prenotare online i clienti](/guide/come-ricevere-prenotazioni-online).
+Se gestisci appuntamenti, puoi anche togliere del tutto il passaggio della telefonata: ne parliamo in [come far prenotare online i clienti](/guide/come-ricevere-prenotazioni-online).
 
 ## 4. Non c'è nessun motivo per scegliere te
 
@@ -81,8 +81,8 @@ Prendi il telefono e controlla il tuo sito con questa lista:
 
 Ogni "no" è un punto su cui lavorare. Spesso bastano due o tre correzioni per vedere la differenza.
 
-Se vuoi vedere come ho risolto questi problemi in casi reali, guarda per esempio il sito di [Galletti Solutions](/progetti/galletti), costruito attorno a un unico obiettivo: far chiamare.
+Se vuoi vedere come abbiamo risolto questi problemi in casi reali, guarda per esempio il sito di [Galletti Solutions](/progetti/galletti), costruito attorno a un unico obiettivo: far chiamare.
 
 ## Se non hai tempo di farlo da solo
 
-Questi controlli puoi farli da solo e alcune correzioni anche. Se invece preferisci che il sito lo sistemi o lo rifaccia qualcuno che lo fa di mestiere, raccontami la tua attività e [ti preparo una proposta gratuita](/#contatti).
+Questi controlli puoi farli da solo e alcune correzioni anche. Se invece preferisci che il sito lo sistemi o lo rifaccia qualcuno che lo fa di mestiere, raccontaci la tua attività e [ti prepariamo una proposta gratuita](/#contatti).

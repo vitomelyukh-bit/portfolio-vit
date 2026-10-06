@@ -1,5 +1,5 @@
 ---
-title: "Sito del ristorante: cosa serve per far prenotare · Vitaliy Omelyukh"
+title: "Sito del ristorante: cosa serve per far prenotare · VitaStrategy"
 description: "Menù leggibile, prenotazione in un tocco, foto vere, orari giusti: cosa deve avere il sito di un ristorante o di un locale per riempire i tavoli."
 h1: "Il sito del ristorante: cosa deve avere per far prenotare?"
 rispostaBreve: "Il sito di un ristorante deve far fare una cosa: prenotare, o almeno venire. Per questo servono il menù leggibile dal telefono, un modo per prenotare sempre visibile, foto vere del locale e dei piatti, orari e indirizzo giusti. Tutto il resto viene dopo."
@@ -50,7 +50,7 @@ Il pulsante per prenotare va in alto e deve restare a portata di pollice mentre 
 - **WhatsApp**: comodo per il cliente, ma ogni prenotazione va gestita a mano;
 - **prenotazione online**: il cliente sceglie giorno, ora e numero di persone senza parlare con nessuno, anche a locale chiuso.
 
-Molti locali offrono più strade insieme, e va benissimo. L'importante è che il cliente non debba cercarle. Le differenze tra prenotazione sul proprio sito e piattaforme esterne le spiego meglio nella guida su [come far prenotare online i clienti](/guide/come-ricevere-prenotazioni-online).
+Molti locali offrono più strade insieme, e va benissimo. L'importante è che il cliente non debba cercarle. Le differenze tra prenotazione sul proprio sito e piattaforme esterne le spieghiamo meglio nella guida su [come far prenotare online i clienti](/guide/come-ricevere-prenotazioni-online).
 
 ## Foto vere, non di repertorio
 
@@ -93,4 +93,4 @@ Trovi altri consigli specifici nella pagina dedicata ai [siti per ristoranti e l
 
 ## Se non hai tempo di farlo da solo
 
-Se il sito del tuo locale non fa prenotare o non ce l'hai ancora, raccontami com'è il tuo ristorante e [ti preparo una proposta gratuita](/#contatti).
+Se il sito del tuo locale non fa prenotare o non ce l'hai ancora, raccontaci com'è il tuo ristorante e [ti prepariamo una proposta gratuita](/#contatti).

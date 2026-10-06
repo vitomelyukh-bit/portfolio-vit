@@ -42,16 +42,16 @@ const skills = [
 ];
 
 const steps = [
-  { title: 'Ci sentiamo 15 minuti', text: 'Mi racconti la tua attività e cosa oggi non funziona. Al telefono o su WhatsApp, gratis.' },
-  { title: 'Ricevi una proposta chiara', text: 'Cosa faccio, entro quando e quanto costa. Prezzo fisso: sai subito quanto spendi.' },
-  { title: 'Costruisco, tu approvi', text: 'Vedi il sito mentre prende forma e lo sistemiamo insieme finché non ti convince.' },
-  { title: 'Online, e non sparisco', text: 'Lo pubblico, lo collego a Google e ti spiego come usarlo. Se dopo ti serve qualcosa, mi scrivi.' },
+  { title: 'Ci sentiamo 15 minuti', text: 'Ci racconti la tua attività e cosa oggi non funziona. Al telefono o su WhatsApp, gratis.' },
+  { title: 'Ricevi una proposta chiara', text: 'Cosa facciamo, entro quando e quanto costa. Prezzo fisso: sai subito quanto spendi.' },
+  { title: 'Costruiamo, tu approvi', text: 'Vedi il sito mentre prende forma e lo sistemiamo insieme finché non ti convince.' },
+  { title: 'Online, e restiamo con te', text: 'Lo pubblichiamo, lo colleghiamo a Google e ti spieghiamo come usarlo. Se dopo ti serve qualcosa, ci scrivi.' },
 ];
 
 const compare = {
   me: [
-    'Parli con chi il sito lo costruisce davvero',
-    'Design, sviluppo, testi e SEO da un’unica persona',
+    'Parli direttamente con chi il sito lo costruisce',
+    'Design, sviluppo, testi e SEO in un unico team',
     'Ogni sito progettato da zero per la tua attività',
     'Prenotazioni, pagamenti, pannelli e automazioni su misura',
   ],
@@ -66,27 +66,27 @@ const compare = {
 const faqs = [
   {
     q: 'Quanto costa un sito?',
-    a: 'Dipende da cosa ti serve: una pagina vetrina e un e-commerce con centinaia di prodotti sono lavori molto diversi. Dopo la chiamata ti mando un preventivo a prezzo fisso, così sai fin da subito quanto spendi.',
+    a: 'Dipende da cosa ti serve: una pagina vetrina e un e-commerce con centinaia di prodotti sono lavori molto diversi. Dopo la chiamata ti mandiamo un preventivo a prezzo fisso, così sai fin da subito quanto spendi.',
   },
   {
     q: 'Quanto tempo ci vuole?',
-    a: 'Te lo scrivo nella proposta, con una data di consegna. Dipende da quante pagine e funzioni servono e da quanto velocemente arrivano testi e foto.',
+    a: 'Te lo scriviamo nella proposta, con una data di consegna. Dipende da quante pagine e funzioni servono e da quanto velocemente arrivano testi e foto.',
   },
   {
     q: 'Ho già un sito: devo rifarlo da zero?',
-    a: 'Non per forza. Lo guardiamo insieme: a volte bastano interventi mirati, altre volte conviene ripartire. Te lo dico con onestà, anche se significa lavorare meno.',
+    a: 'Non per forza. Lo guardiamo insieme: a volte bastano interventi mirati, altre volte conviene ripartire. Te lo diciamo con onestà, anche se significa lavorare meno.',
   },
   {
     q: 'Potrò modificarlo da solo?',
-    a: 'Sì. Se aggiorni spesso prezzi, menù, news o foto ti preparo un pannello semplice per farlo in autonomia, come per Red Moon Traslochi o lo Studio Iamundo & Candido.',
+    a: 'Sì. Se aggiorni spesso prezzi, menù, news o foto ti prepariamo un pannello semplice per farlo in autonomia, come per Red Moon Traslochi o lo Studio Iamundo & Candido.',
   },
   {
     q: 'Ti occupi anche di Google Maps?',
-    a: 'Sì. Con TiTrovano curo ogni settimana la scheda Google delle attività locali: novità, risposte alle recensioni e strumenti per riceverne di nuove.',
+    a: 'Sì. Con TiTrovano curiamo ogni settimana la scheda Google delle attività locali: novità, risposte alle recensioni e strumenti per riceverne di nuove.',
   },
   {
     q: 'Dominio, hosting, email: chi se ne occupa?',
-    a: 'Io. Posso partire da zero o lavorare su quello che hai già. Tu non devi configurare niente.',
+    a: 'Noi. Possiamo partire da zero o lavorare su quello che hai già. Tu non devi configurare niente.',
   },
 ];
 ---
@@ -109,14 +109,14 @@ const faqs = [
       <div class="hero__foot" data-reveal>
         <div>
           <p class="hero__lead">
-            Progetto e costruisco siti, e-commerce e prenotazioni online per ristoranti, studi, centri estetici e negozi.
-            Dal primo messaggio alla messa online parli sempre con me: nessuna agenzia, nessun passaggio di mano.
+            Progettiamo e costruiamo siti, e-commerce e prenotazioni online per ristoranti, studi, centri estetici e negozi.
+            Dal primo messaggio alla messa online hai un unico referente: niente commerciali, niente passaggi di mano.
           </p>
           <div class="project__actions hero__ctas">
             <a class="btn btn--big btn--lime" href="#contatti">Richiedi la proposta gratuita <span aria-hidden="true">→</span></a>
             <a class="btn btn--big btn--ghost" href="#lavori">Guarda i lavori</a>
           </div>
-          <p class="micro mono">Gratis e senza impegno · Ti rispondo di persona</p>
+          <p class="micro mono">Gratis e senza impegno · Ti rispondiamo di persona</p>
         </div>
         <dl class="stats">
           <div><dt>Progetti online</dt><dd>{projects.length}</dd></div>
@@ -136,7 +136,7 @@ const faqs = [
 
     <!-- PROOF -->
     <section class="trust">
-      <p class="mono trust__label">Hanno scelto di lavorare con me</p>
+      <p class="mono trust__label">Hanno scelto di lavorare con noi</p>
       <ul class="trust__names">
         {projects.map((p) => <li style={`--accent:${p.accent}`}>{p.name}</li>)}
       </ul>
@@ -155,15 +155,15 @@ const faqs = [
         ))}
       </div>
       <p class="bridge" data-reveal>
-        Il problema quasi mai è il tuo lavoro. È <em>come lo racconti online.</em> Ed è esattamente quello che sistemo.
+        Il problema quasi mai è il tuo lavoro. È <em>come lo racconti online.</em> Ed è esattamente quello che sistemiamo.
       </p>
     </section>
 
     <!-- SOLUTION -->
     <section id="competenze" class="block">
       <div class="section-head section-head--plain">
-        <h2 class="section-title" data-reveal>Cosa costruisco<br /><em>per la tua attività</em></h2>
-        <p class="section-sub" data-reveal>Non vendo pacchetti uguali per tutti: parto da come lavori e da come ti cercano i tuoi clienti.</p>
+        <h2 class="section-title" data-reveal>Cosa costruiamo<br /><em>per la tua attività</em></h2>
+        <p class="section-sub" data-reveal>Non vendiamo pacchetti uguali per tutti: partiamo da come lavori e da come ti cercano i tuoi clienti.</p>
       </div>
       <div class="skills__grid">
         {skills.map((s, i) => (
@@ -269,10 +269,10 @@ const faqs = [
 
     <!-- COMPARE -->
     <section class="block">
-      <h2 class="section-title" data-reveal>Perché con me<br /><em>e non con un’agenzia</em></h2>
+      <h2 class="section-title" data-reveal>Perché VitaStrategy<br /><em>e non un’agenzia qualunque</em></h2>
       <div class="compare" data-reveal>
         <div class="compare__col compare__col--me">
-          <p class="mono">Con me</p>
+          <p class="mono">Con VitaStrategy</p>
           <ul>{compare.me.map((x) => <li>{x}</li>)}</ul>
         </div>
         <div class="compare__col">
@@ -320,17 +320,17 @@ const faqs = [
     <section id="contatti" class="contact2">
       <div class="contact2__intro" data-reveal>
         <p class="eyebrow mono"><span class="dot"></span> Disponibile per nuovi progetti</p>
-        <h2 class="section-title">Raccontami la tua attività.<br /><em>La proposta è gratis.</em></h2>
+        <h2 class="section-title">Raccontaci la tua attività.<br /><em>La proposta è gratis.</em></h2>
         <ol class="next-steps">
-          <li><strong>Leggo la tua richiesta</strong> e ti ricontatto io, di persona.</li>
+          <li><strong>Leggiamo la tua richiesta</strong> e ti ricontattiamo, di persona.</li>
           <li><strong>Ci sentiamo 15 minuti</strong> per capire cosa ti serve davvero.</li>
           <li><strong>Ricevi una proposta scritta</strong> con tempi e prezzo fisso. Decidi tu, senza pressioni.</li>
         </ol>
         {site.whatsapp && (
           <p class="contact2__alt">
             Preferisci scrivere subito?{' '}
-            <a href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent('Ciao Vitaliy, ho visto il tuo sito e vorrei parlarti della mia attività.')}`} target="_blank" rel="noopener">
-              Scrivimi su WhatsApp ↗
+            <a href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent('Ciao VitaStrategy, ho visto il vostro sito e vorrei parlarvi della mia attività.')}`} target="_blank" rel="noopener">
+              Scrivici su WhatsApp ↗
             </a>
           </p>
         )}
@@ -376,7 +376,7 @@ const faqs = [
     const name = new URLSearchParams(location.search).get('a')?.trim().slice(0, 60);
     if (name) {
       const hello = document.getElementById('hello')!;
-      hello.textContent = `👋 Ciao ${name}, ti ho scritto io: qui sotto trovi i miei lavori e come posso aiutarti.`;
+      hello.textContent = `👋 Ciao ${name}, ti abbiamo scritto noi: qui sotto trovi i nostri lavori e come possiamo aiutarti.`;
       hello.hidden = false;
     }
 

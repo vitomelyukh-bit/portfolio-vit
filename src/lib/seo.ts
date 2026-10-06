@@ -2,26 +2,28 @@ import { site } from '../data/site';
 
 export const SITE_URL = 'https://vitastrategy.it';
 export const abs = (path: string) => new URL(path, SITE_URL).toString();
-const personId = abs('/#vitaliy');
-const businessId = abs('/#servizio');
+const personId = abs('/#fondatore');
+const orgId = abs('/#organizzazione');
+const businessId = orgId;
 
 export const personLd = () => ({
   '@context': 'https://schema.org',
   '@type': 'Person',
   '@id': personId,
-  name: site.name,
-  jobTitle: site.role,
-  url: SITE_URL,
-  address: { '@type': 'PostalAddress', addressLocality: site.city, addressCountry: 'IT' },
+  name: site.founder,
+  jobTitle: 'Fondatore',
+  worksFor: { '@id': orgId },
   sameAs: [site.github],
 });
 
 export const businessLd = () => ({
   '@context': 'https://schema.org',
   '@type': 'ProfessionalService',
-  '@id': businessId,
-  name: `${site.name} · Siti web per attività locali`,
+  '@id': orgId,
+  name: site.name,
+  description: site.tagline,
   url: SITE_URL,
+  logo: abs('/logo-mark.svg'),
   image: abs('/og.webp'),
   founder: { '@id': personId },
   address: { '@type': 'PostalAddress', addressLocality: site.city, addressCountry: 'IT' },
@@ -36,7 +38,7 @@ export const websiteLd = () => ({
   name: site.name,
   url: SITE_URL,
   inLanguage: 'it-IT',
-  publisher: { '@id': personId },
+  publisher: { '@id': orgId },
 });
 
 export const breadcrumbLd = (items: [string, string][]) => ({
@@ -64,8 +66,8 @@ export const articleLd = (a: { h1: string; description: string; path: string; da
   datePublished: a.datePublished,
   dateModified: a.dateModified,
   inLanguage: 'it-IT',
-  author: { '@type': 'Person', '@id': personId, name: site.name },
-  publisher: { '@type': 'Person', '@id': personId, name: site.name },
+  author: { '@type': 'Organization', '@id': orgId, name: site.name },
+  publisher: { '@type': 'Organization', '@id': orgId, name: site.name, logo: { '@type': 'ImageObject', url: abs('/logo-mark.svg') } },
   image: abs('/og.webp'),
 });
 
@@ -86,6 +88,6 @@ export const projectLd = (p: { name: string; description: string; url: string; p
   description: p.description,
   url: abs(p.path),
   sameAs: p.url,
-  creator: { '@id': personId },
+  creator: { '@id': orgId },
   inLanguage: 'it-IT',
 });

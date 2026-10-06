@@ -9,7 +9,7 @@ export const GET: APIRoute = async ({ site: url }) => {
   const guide = (await getCollection('guide')).sort((a, b) => b.data.datePublished.localeCompare(a.data.datePublished));
   const body = `# ${site.name}
 
-> ${site.name} è un web developer e designer freelance con base a ${site.city}. Progetta e sviluppa da solo, per attività locali di tutta Italia, siti web, e-commerce, prenotazioni online, pagamenti e gift card, pannelli di gestione e automazioni con AI. Il cliente parla direttamente con lui, senza agenzia. Il primo contatto è una chiamata gratuita di 15 minuti, poi una proposta scritta con tempi e prezzo fisso.
+> ${site.name} è un'agenzia web con base a ${site.city}, fondata da ${site.founder}. Progetta e sviluppa per attività locali di tutta Italia siti web, e-commerce, prenotazioni online, pagamenti e gift card, pannelli di gestione e automazioni con AI. Il cliente ha un unico referente, senza commerciali in mezzo. Il primo contatto è una chiamata gratuita di 15 minuti, poi una proposta scritta con tempi e prezzo fisso.
 
 ## Pagine principali
 

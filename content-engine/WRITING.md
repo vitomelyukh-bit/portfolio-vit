@@ -4,11 +4,13 @@ Queste istruzioni le segue la routine automatica che pubblica le guide su vitast
 
 ## Chi è e cosa vende il sito
 
-Vitaliy Omelyukh progetta e sviluppa da solo siti web, e-commerce, prenotazioni online, pannelli di gestione e automazioni con AI per **attività locali italiane**: ristoranti, centri estetici, studi professionali, artigiani, imprese di servizi. Lavora da Roma, per tutta Italia. Il cliente parla sempre con lui, senza agenzia in mezzo.
+**VitaStrategy** è un'agenzia web con base a Roma (fondatore: Vitaliy Omelyukh). Progetta e sviluppa siti web, e-commerce, prenotazioni online, pannelli di gestione e automazioni con AI per **attività locali italiane**: ristoranti, centri estetici, studi professionali, artigiani, imprese di servizi, in tutta Italia. Il cliente ha un unico referente, senza commerciali in mezzo.
+
+**Voce: sempre al plurale** ("ti prepariamo", "abbiamo realizzato", "raccontaci"). Mai la prima persona singolare.
 
 L'obiettivo delle guide è portare titolari con un **problema concreto** (il sito non porta clienti, le prenotazioni sono un caos, non si trovano su Google...) a richiedere una **proposta gratuita** dal form della home (`/#contatti`).
 
-Chi legge è un titolare, non un tecnico. Cerca su Google il suo problema nel momento in cui gli brucia. La guida deve **aiutarlo davvero**, anche se poi decide di fare da solo. Solo alla fine ricorda, senza enfasi, che se non ha tempo può farlo fare a Vitaliy.
+Chi legge è un titolare, non un tecnico. Cerca su Google il suo problema nel momento in cui gli brucia. La guida deve **aiutarlo davvero**, anche se poi decide di fare da solo. Solo alla fine ricorda, senza enfasi, che se non ha tempo può affidarlo a VitaStrategy.
 
 ## Tre temi, e quale scrivere oggi
 
@@ -29,7 +31,7 @@ Se una regola non si può rispettare, la guida non si pubblica.
 1. **Niente numeri inventati.** Nessuna statistica, percentuale o "studio" senza una fonte verificata e linkata. Se non trovi la fonte, non scriverlo.
 2. **Niente clienti, testimonianze o risultati inventati.** Niente "un mio cliente ha raddoppiato...", "i miei clienti ottengono...". Puoi citare **solo i progetti reali** del portfolio (`src/data/projects.ts`) e solo per quello che fanno davvero (es. "il sito di Olizen mostra solo gli orari liberi"), linkando `/progetti/<slug>`. Mai inventare risultati di quei progetti.
 3. **Mai promettere risultati**: né clienti, né vendite, né posizioni su Google. Nessuno decide al posto di Google chi compare per primo.
-4. **Niente prezzi del servizio di Vitaliy.** Si può spiegare da cosa dipende il costo di un sito, non quanto costa da lui. I costi di terzi (dominio, piattaforme) solo con fonte e data.
+4. **Niente prezzi dei servizi di VitaStrategy.** Si può spiegare da cosa dipende il costo di un sito, non quanto costa da noi. I costi di terzi (dominio, piattaforme) solo con fonte e data.
 5. **Niente pagine "settore × città"** ("Sito web per ristoranti a Milano"). Le città compaiono solo come esempio nel testo, mai nello slug o nel titolo.
 6. **Mai parlare male di concorrenti con nome**, né di agenzie o piattaforme specifiche. Si possono descrivere i limiti di un tipo di soluzione (es. "le piattaforme di prenotazione trattengono una commissione") senza numeri non verificati.
 7. **Mai copiare** testo da altri siti.
@@ -67,7 +69,7 @@ File: `content/guide/<slug>.md`. Slug in minuscolo, parole separate da trattini,
 
 ```yaml
 ---
-title: "Titolo per Google · Vitaliy Omelyukh"   # max 70 caratteri, finisce con " · Vitaliy Omelyukh"
+title: "Titolo per Google · VitaStrategy"   # max 70 caratteri, finisce con " · VitaStrategy"
 description: "Descrizione per Google, 120-170 caratteri, concreta, senza promesse."
 h1: "Titolo visibile, di solito una domanda"
 rispostaBreve: "Due o tre frasi che rispondono subito."
@@ -86,7 +88,7 @@ faq:                          # facoltativo
 ---
 ```
 
-Settori esistenti: i file in `content/settori/`. Non creare nuovi settori senza che lo chieda Vitaliy.
+Settori esistenti: i file in `content/settori/`. Non creare nuovi settori senza che lo chieda il titolare.
 
 ## Procedura
 

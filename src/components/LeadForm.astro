@@ -27,7 +27,7 @@ const wa = site.whatsapp ? `https://wa.me/${site.whatsapp}` : '';
       <input name="email" type="email" autocomplete="email" />
     </label>
   </div>
-  <p class="field__hint">Lasciami almeno un recapito: ti ricontatto lì.</p>
+  <p class="field__hint">Lasciaci almeno un recapito: ti ricontattiamo lì.</p>
 
   <fieldset class="field">
     <legend>Cosa ti serve?</legend>
@@ -49,7 +49,7 @@ const wa = site.whatsapp ? `https://wa.me/${site.whatsapp}` : '';
   </label>
 
   <label class="field">
-    <span>Raccontami in due righe (facoltativo)</span>
+    <span>Raccontaci in due righe (facoltativo)</span>
     <textarea name="messaggio" rows="3" placeholder="Es. ho un ristorante, vorrei far prenotare i tavoli online e comparire su Google."></textarea>
   </label>
 
@@ -70,7 +70,7 @@ const wa = site.whatsapp ? `https://wa.me/${site.whatsapp}` : '';
 <div class="lead-ok" id="lead-ok" hidden>
   <span class="lead-ok__icon" aria-hidden="true">✓</span>
   <h3>Richiesta ricevuta.</h3>
-  <p>Grazie! La leggo personalmente e ti ricontatto a breve per fissare la chiamata di 15 minuti.</p>
+  <p>Grazie! La leggiamo con attenzione e ti ricontattiamo a breve per fissare una chiamata di 15 minuti.</p>
 </div>
 
 <script>
@@ -139,7 +139,7 @@ const wa = site.whatsapp ? `https://wa.me/${site.whatsapp}` : '';
       link.href = wa;
       link.target = '_blank';
       link.rel = 'noopener';
-      link.textContent = 'Scrivimi su WhatsApp ↗';
+      link.textContent = 'Scrivici su WhatsApp ↗';
       msg.append(link);
     }
   }

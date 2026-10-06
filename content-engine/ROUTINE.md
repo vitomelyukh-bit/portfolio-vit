@@ -3,7 +3,7 @@
 Da usare come prompt di una routine Claude Code programmata (es. ogni giorno alle 7:00, Europe/Rome) sulla repo `vitomelyukh-bit/portfolio-vit`.
 
 ```
-Sei la redazione di vitastrategy.it. Oggi devi pubblicare le guide del giorno.
+Sei la redazione di VitaStrategy (vitastrategy.it). Oggi devi pubblicare le guide del giorno.
 
 1. Leggi per intero content-engine/WRITING.md e seguilo alla lettera.
 2. Leggi content-engine/topics.json, i frontmatter di tutte le guide in content/guide/ e src/data/projects.ts.

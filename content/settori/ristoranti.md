@@ -1,7 +1,7 @@
 ---
 nome: Ristoranti e locali
 ordine: 1
-title: Sito web per ristoranti, pizzerie e locali · Vitaliy Omelyukh
+title: Sito web per ristoranti, pizzerie e locali · VitaStrategy
 description: "Un sito per il tuo ristorante che fa prenotare, mostra il menù come si deve e ti fa trovare su Google. Progettato su misura, senza template."
 h1: Sito web per ristoranti, pizzerie e locali
 intro: "Chi sceglie dove mangiare decide dal telefono, in pochi secondi: guarda le foto, il menù, gli orari e quanto è facile prenotare. Il tuo sito deve rispondere a tutto questo prima che apra la pagina del locale accanto."
@@ -27,7 +27,7 @@ soluzioni:
 progetti: ["rare"]
 faq:
   - domanda: "Posso aggiornare il menù da solo?"
-    risposta: "Sì. Se il menù cambia spesso ti preparo un pannello semplice per modificare piatti, prezzi e promo senza chiamare nessuno."
+    risposta: "Sì. Se il menù cambia spesso ti prepariamo un pannello semplice per modificare piatti, prezzi e promo senza chiamare nessuno."
   - domanda: "Il sito sostituisce le piattaforme di prenotazione e delivery?"
     risposta: "Non per forza: può affiancarle. L'obiettivo è che chi ti cerca direttamente possa prenotare o ordinare da te, senza passare da un intermediario."
   - domanda: "Serve anche la scheda Google Maps?"

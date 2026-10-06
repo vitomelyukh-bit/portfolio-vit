@@ -1,7 +1,7 @@
 ---
 nome: Imprese di servizi
 ordine: 5
-title: Sito web per imprese di servizi e preventivi · Vitaliy Omelyukh
+title: Sito web per imprese di servizi e preventivi · VitaStrategy
 description: "Sito per traslochi, disinfestazione, edilizia, pulizie e servizi alle imprese, pensato per far arrivare richieste di preventivo e chiamate."
 h1: Sito web per imprese di servizi che vivono di preventivi
 intro: "Chi ha un problema urgente, un trasloco, un'infestazione, un lavoro in casa, non legge: cerca qualcuno serio da chiamare subito. Il sito deve dargli fiducia e un numero da premere, in pochi secondi."

@@ -1,7 +1,7 @@
 export type Category = 'prodotti' | 'ecommerce' | 'prenotazioni' | 'professionisti' | 'local';
 
 export const categories: Record<Category, string> = {
-  prodotti: 'Prodotti miei',
+  prodotti: 'Prodotti nostri',
   ecommerce: 'E-commerce',
   prenotazioni: 'Prenotazioni & pagamenti',
   professionisti: 'Professionisti & B2B',
@@ -56,9 +56,9 @@ export const projects: Project[] = [
     category: 'prodotti',
     sector: 'Servizio per attività locali',
     location: 'Italia',
-    tagline: 'Il mio servizio per far trovare le attività locali su Google Maps e ChatGPT, con un sito che si aggiorna da solo ogni giorno.',
+    tagline: 'Il nostro servizio per far trovare le attività locali su Google Maps e ChatGPT, con un sito che si aggiorna da solo ogni giorno.',
     intro:
-      'TiTrovano è un servizio mio: per 59 € al mese tengo viva la scheda Google Maps delle attività locali, con novità ogni settimana, risposte alle recensioni e strumenti per riceverne di nuove. Il sito spiega il servizio con esempi concreti e porta all’analisi gratuita. Dietro c’è un motore di contenuti che ogni giorno scrive e pubblica nuove guide per i titolari.',
+      'TiTrovano è un nostro servizio: per 59 € al mese teniamo viva la scheda Google Maps delle attività locali, con novità ogni settimana, risposte alle recensioni e strumenti per riceverne di nuove. Il sito spiega il servizio con esempi concreti e porta all’analisi gratuita. Dietro c’è un motore di contenuti che ogni giorno scrive e pubblica nuove guide per i titolari.',
     features: [
       'Guide pubblicate ogni giorno da un motore di contenuti AI',
       'Richiesta di analisi gratuita con notifica via email',
