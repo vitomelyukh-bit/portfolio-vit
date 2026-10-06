@@ -1,9 +1,10 @@
-export type Category = 'ecommerce' | 'prenotazioni' | 'professionisti' | 'local';
+export type Category = 'prodotti' | 'ecommerce' | 'prenotazioni' | 'professionisti' | 'local';
 
 export const categories: Record<Category, string> = {
+  prodotti: 'Prodotti miei',
   ecommerce: 'E-commerce',
   prenotazioni: 'Prenotazioni & pagamenti',
-  professionisti: 'Studi professionali',
+  professionisti: 'Professionisti & B2B',
   local: 'Locali & servizi',
 };
 
@@ -47,6 +48,26 @@ export const projects: Project[] = [
     ],
     accent: '#9b4dca',
     languages: ['IT', 'EN'],
+  },
+  {
+    slug: 'titrovano',
+    name: 'TiTrovano',
+    url: 'https://titrovano.it',
+    category: 'prodotti',
+    sector: 'Servizio per attività locali',
+    location: 'Italia',
+    tagline: 'Il mio servizio per far trovare le attività locali su Google Maps e ChatGPT, con un sito che si aggiorna da solo ogni giorno.',
+    intro:
+      'TiTrovano è un servizio mio: per 59 € al mese tengo viva la scheda Google Maps delle attività locali, con novità ogni settimana, risposte alle recensioni e strumenti per riceverne di nuove. Il sito spiega il servizio con esempi concreti e porta all’analisi gratuita. Dietro c’è un motore di contenuti che ogni giorno scrive e pubblica nuove guide per i titolari.',
+    features: [
+      'Guide pubblicate ogni giorno da un motore di contenuti AI',
+      'Richiesta di analisi gratuita con notifica via email',
+      'Pagamenti con Stripe',
+      'Pagine statiche ottimizzate per Google e per le AI (llms.txt, dati strutturati)',
+      'Secondo servizio: annunci su ChatGPT',
+      'Next.js, database Neon',
+    ],
+    accent: '#1f7a5c',
   },
   {
     slug: 'rare',
@@ -172,10 +193,12 @@ export const projects: Project[] = [
     category: 'professionisti',
     sector: 'Commercialisti e consulenti del lavoro',
     location: 'Roma Nord',
-    tagline: 'Sito istituzionale con area clienti e scadenzario fiscale per uno studio con 30 anni di storia.',
+    tagline: 'Sito istituzionale con area clienti, scadenzario e un motore AI che propone ogni giorno le news da approvare.',
     intro:
-      'Uno studio storico che voleva un’immagine all’altezza della sua esperienza. Il sito presenta team e servizi, tiene i clienti aggiornati con news e scadenze fiscali e dà accesso a un’area riservata.',
+      'Uno studio storico che voleva un’immagine all’altezza della sua esperienza. Il sito presenta team e servizi e dà accesso a un’area riservata. Le news si scrivono quasi da sole: ogni giorno un’AI legge le fonti istituzionali (INPS, Agenzia delle Entrate, Ministero del Lavoro) e propone fino a due notizie, che lo studio approva da un pannello admin prima della pubblicazione.',
     features: [
+      'News proposte ogni giorno da un’AI su fonti istituzionali',
+      'Pannello admin con approvazione ed editor degli articoli',
       'Area clienti riservata',
       'Scadenzario fiscale',
       'Pagine team e servizi',
@@ -202,6 +225,44 @@ export const projects: Project[] = [
       'Hero con slider',
     ],
     accent: '#2e6b52',
+  },
+  {
+    slug: 'redmoon',
+    name: 'Red Moon Traslochi',
+    url: 'https://redmoontraslochi.it',
+    category: 'local',
+    sector: 'Traslochi nazionali e internazionali',
+    location: 'Italia',
+    tagline: 'Sito per un’azienda di traslochi che punta tutto sul preventivo gratuito, con pannello admin per gestirlo.',
+    intro:
+      'Chi trasloca cerca qualcuno di cui fidarsi. Il sito presenta servizi, imballaggio e metodo di lavoro, mette in evidenza iscrizioni e garanzie e porta a richiedere un preventivo. Il cliente gestisce i contenuti da un pannello di amministrazione.',
+    features: [
+      'Richiesta di preventivo gratuito',
+      'Pannello admin per gestire i contenuti',
+      'Pagine servizi, imballaggio e come funziona',
+      'Chiamata diretta ai due numeri',
+      'Recensioni dei clienti',
+    ],
+    accent: '#c41e1e',
+  },
+  {
+    slug: 'fed-outsourcing',
+    name: 'FED Outsourcing',
+    url: 'https://fedoutsourcing.it',
+    category: 'professionisti',
+    sector: 'Gestione del personale e appalti',
+    location: 'Roma',
+    tagline: 'Landing B2B per generare contatti qualificati, poi richiamati da un assistente AI e da un commerciale.',
+    intro:
+      'Una landing pensata per imprese di edilizia, trasporti e pulizie che vogliono ridurre il costo del personale. Numeri, settori, funzionamento e FAQ rispondono alle obiezioni, e i contatti raccolti vengono richiamati prima da un sistema AI e poi da un venditore.',
+    features: [
+      'Raccolta contatti qualificati',
+      'Contatti richiamati da un assistente AI',
+      'Sezioni per settore (edilizia, trasporti, pulizie)',
+      'Numeri, testimonianze e FAQ',
+      'Integrazione con database Supabase',
+    ],
+    accent: '#f07a1a',
   },
   {
     slug: 'galletti',

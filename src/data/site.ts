@@ -6,6 +6,6 @@ export const site = {
   role: 'Web developer & designer',
   city: 'Roma',
   email: '',
-  whatsapp: '', // es. '393331234567' (solo numeri, con prefisso)
+  whatsapp: '393511781799', // es. '393331234567' (solo numeri, con prefisso)
   github: 'https://github.com/vitomelyukh-bit',
 };

@@ -10,13 +10,13 @@ const sectors = new Set(projects.map((p) => p.sector)).size;
 
 const skills = [
   { title: 'Siti vetrina', text: 'Design su misura, testi orientati alla conversione, veloci su ogni dispositivo.', ref: ['rare', 'malcusa', 'workadvizee'] },
-  { title: 'E-commerce', text: 'Catalogo, carrello, checkout, account cliente e spedizioni.', ref: ['mimaelulu', 'evoos', 'malcusa'] },
+  { title: 'E-commerce', text: 'Catalogo, carrello, checkout, account cliente e spedizioni, anche in più lingue.', ref: ['mimaelulu', 'evoos', 'malcusa'] },
   { title: 'Prenotazioni online', text: 'Calendario con disponibilità reale, conferme e pagamento online o in sede.', ref: ['olizen'] },
   { title: 'Pagamenti & gift card', text: 'Incassi online con Stripe, buoni regalo, acquisti di servizi.', ref: ['white-garden', 'olizen'] },
-  { title: 'Aree riservate', text: 'Login, area clienti, strumenti interni e gestionali.', ref: ['iamundo-candido', 'olizen', 'mimaelulu'] },
-  { title: 'Lead generation', text: 'Moduli guidati, CTA chiama / WhatsApp, landing che portano richieste.', ref: ['galletti', 'ricci'] },
-  { title: 'Multilingua', text: 'Siti in più lingue per vendere anche all’estero.', ref: ['mimaelulu', 'malcusa'] },
-  { title: 'SEO locale & contenuti', text: 'Struttura, meta e blog per farsi trovare in zona.', ref: ['ricci', 'iamundo-candido', 'evoos'] },
+  { title: 'Aree riservate & admin', text: 'Login, area clienti, pannelli per gestire contenuti e richieste.', ref: ['iamundo-candido', 'redmoon', 'olizen'] },
+  { title: 'Lead generation', text: 'Moduli guidati, CTA chiama / WhatsApp, landing che portano richieste.', ref: ['fed-outsourcing', 'galletti', 'ricci'] },
+  { title: 'Automazioni con AI', text: 'Contenuti e notizie generati ogni giorno, contatti richiamati da un assistente AI.', ref: ['titrovano', 'iamundo-candido', 'fed-outsourcing'] },
+  { title: 'SEO locale & contenuti', text: 'Struttura, dati strutturati e blog per farsi trovare su Google e dalle AI.', ref: ['titrovano', 'ricci', 'evoos'] },
 ];
 const byslug = Object.fromEntries(projects.map((p) => [p.slug, p]));
 const contactHref = site.email ? `mailto:${site.email}` : site.whatsapp ? `https://wa.me/${site.whatsapp}` : '';
@@ -121,7 +121,7 @@ const contactHref = site.email ? `mailto:${site.email}` : site.whatsapp ? `https
       <p class="contact__lead">Sito, e-commerce o gestionale: raccontami cosa ti serve e ti preparo una proposta.</p>
       <div class="project__actions">
         {site.email && <a class="btn btn--big" href={`mailto:${site.email}`}>{site.email}</a>}
-        {site.whatsapp && <a class="btn btn--big btn--ghost" href={`https://wa.me/${site.whatsapp}`} target="_blank" rel="noopener">WhatsApp ↗</a>}
+        {site.whatsapp && <a class={`btn btn--big${site.email ? ' btn--ghost' : ''}`} href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent('Ciao Vitaliy, ho visto il tuo portfolio e vorrei parlarti di un progetto.')}`} target="_blank" rel="noopener">WhatsApp ↗</a>}
         {!contactHref && <a class="btn btn--big" href={site.github} target="_blank" rel="noopener">GitHub ↗</a>}
       </div>
     </section>
