@@ -38,8 +38,9 @@ const { title, description, image = '/og.webp' } = Astro.props;
       </a>
       <nav class="nav__links">
         <a href="/#lavori">Lavori</a>
-        <a href="/#competenze">Competenze</a>
-        <a href="/#contatti" class="nav__cta">Contattami</a>
+        <a href="/#metodo">Come lavoriamo</a>
+        <a href="/#faq">FAQ</a>
+        <a href="/#contatti" class="nav__cta">Richiedi una proposta</a>
       </nav>
     </header>
 
@@ -48,6 +49,7 @@ const { title, description, image = '/og.webp' } = Astro.props;
     <footer class="footer">
       <span>© {new Date().getFullYear()} {site.name}</span>
       <span class="mono">Progettato e sviluppato da me, come tutti i siti qui dentro.</span>
+      <a href="/privacy" class="mono">Privacy</a>
     </footer>
 
     <script>

@@ -1,0 +1,146 @@
+---
+import { site } from '../data/site';
+
+const services = ['Sito nuovo', 'Rifare il sito', 'E-commerce', 'Prenotazioni online', 'Gestionale / area riservata', 'Altro'];
+const budgets = ['Meno di 1.000 €', '1.000 – 3.000 €', '3.000 – 6.000 €', 'Oltre 6.000 €', 'Non lo so ancora'];
+const wa = site.whatsapp ? `https://wa.me/${site.whatsapp}` : '';
+---
+
+<form class="lead" id="lead-form" novalidate data-wa={wa}>
+  <div class="lead__row">
+    <label class="field">
+      <span>Nome e cognome *</span>
+      <input name="nome" autocomplete="name" required />
+    </label>
+    <label class="field">
+      <span>Nome dell’attività *</span>
+      <input name="attivita" autocomplete="organization" required />
+    </label>
+  </div>
+  <div class="lead__row">
+    <label class="field">
+      <span>Telefono / WhatsApp</span>
+      <input name="telefono" type="tel" autocomplete="tel" inputmode="tel" />
+    </label>
+    <label class="field">
+      <span>Email</span>
+      <input name="email" type="email" autocomplete="email" />
+    </label>
+  </div>
+  <p class="field__hint">Lasciami almeno un recapito: ti ricontatto lì.</p>
+
+  <fieldset class="field">
+    <legend>Cosa ti serve?</legend>
+    <div class="pills">
+      {services.map((s, i) => (
+        <label class="pill">
+          <input type="radio" name="servizio" value={s} checked={i === 0} />
+          <span>{s}</span>
+        </label>
+      ))}
+    </div>
+  </fieldset>
+
+  <label class="field">
+    <span>Budget indicativo</span>
+    <select name="budget">
+      {budgets.map((b) => <option value={b} selected={b === 'Non lo so ancora'}>{b}</option>)}
+    </select>
+  </label>
+
+  <label class="field">
+    <span>Raccontami in due righe (facoltativo)</span>
+    <textarea name="messaggio" rows="3" placeholder="Es. ho un ristorante, vorrei far prenotare i tavoli online e comparire su Google."></textarea>
+  </label>
+
+  <!-- Honeypot anti-spam -->
+  <label class="hp" aria-hidden="true">Sito web <input name="sito_web" tabindex="-1" autocomplete="off" /></label>
+
+  <label class="check">
+    <input type="checkbox" name="privacy" required />
+    <span>Ho letto l’<a href="/privacy" target="_blank">informativa privacy</a> e acconsento a essere ricontattato. *</span>
+  </label>
+
+  <button class="btn btn--big btn--lime lead__submit" type="submit">
+    <span class="lead__label">Richiedi la proposta gratuita →</span>
+  </button>
+  <p class="lead__msg" role="status" aria-live="polite"></p>
+</form>
+
+<div class="lead-ok" id="lead-ok" hidden>
+  <span class="lead-ok__icon" aria-hidden="true">✓</span>
+  <h3>Richiesta ricevuta.</h3>
+  <p>Grazie! La leggo personalmente e ti ricontatto a breve per fissare la chiamata di 15 minuti.</p>
+</div>
+
+<script>
+  const form = document.getElementById('lead-form') as HTMLFormElement;
+  const ok = document.getElementById('lead-ok')!;
+  const msg = form.querySelector<HTMLElement>('.lead__msg')!;
+  const btn = form.querySelector<HTMLButtonElement>('.lead__submit')!;
+  const params = new URLSearchParams(location.search);
+
+  // Dai link outbound (?a=Nome attività) precompila il campo attività
+  const a = params.get('a');
+  if (a) (form.elements.namedItem('attivita') as HTMLInputElement).value = a.slice(0, 120);
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const fd = new FormData(form);
+    const get = (k: string) => String(fd.get(k) ?? '').trim();
+    msg.textContent = '';
+    msg.classList.remove('is-error');
+
+    if (!get('nome') || !get('attivita')) return fail('Inserisci il tuo nome e quello dell’attività.');
+    if (!get('telefono') && !get('email')) return fail('Lasciami un telefono o un’email per ricontattarti.');
+    if (!fd.get('privacy')) return fail('Per inviare la richiesta serve il consenso privacy.');
+
+    btn.disabled = true;
+    btn.classList.add('is-loading');
+    try {
+      const res = await fetch('/api/lead', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({
+          nome: get('nome'),
+          attivita: get('attivita'),
+          telefono: get('telefono'),
+          email: get('email'),
+          servizio: get('servizio'),
+          budget: get('budget'),
+          messaggio: get('messaggio'),
+          sito_web: get('sito_web'),
+          privacy: true,
+          ref: params.get('ref') ?? params.get('a') ?? '',
+          utm_source: params.get('utm_source') ?? '',
+          utm_campaign: params.get('utm_campaign') ?? '',
+          pagina: location.pathname,
+        }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || !data.ok) throw new Error(data.error || 'Invio non riuscito.');
+      form.hidden = true;
+      ok.hidden = false;
+      (window as any).va?.('event', { name: 'lead' });
+    } catch (err) {
+      fail((err as Error).message, true);
+    } finally {
+      btn.disabled = false;
+      btn.classList.remove('is-loading');
+    }
+  });
+
+  function fail(text: string, offerWa = false) {
+    msg.classList.add('is-error');
+    msg.textContent = text + ' ';
+    const wa = form.dataset.wa;
+    if (offerWa && wa) {
+      const link = document.createElement('a');
+      link.href = wa;
+      link.target = '_blank';
+      link.rel = 'noopener';
+      link.textContent = 'Scrivimi su WhatsApp ↗';
+      msg.append(link);
+    }
+  }
+</script>

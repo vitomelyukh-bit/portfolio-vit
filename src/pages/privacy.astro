@@ -1,0 +1,38 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../data/site';
+---
+
+<Base title={`Privacy · ${site.name}`} description="Informativa sul trattamento dei dati personali raccolti tramite il modulo di contatto.">
+  <main class="detail legal">
+    <a href="/" class="back mono">← Torna alla home</a>
+    <h1 class="section-title">Informativa privacy</h1>
+    <p>
+      Questa informativa riguarda i dati che lasci compilando il modulo di contatto di questo sito, ai sensi del
+      Regolamento UE 2016/679 (GDPR).
+    </p>
+    <h2>Titolare del trattamento</h2>
+    <p>
+      {site.name}{site.email && <>, contattabile all’indirizzo <a href={`mailto:${site.email}`}>{site.email}</a></>}
+      {site.whatsapp && <>{site.email ? ' o' : ', contattabile'} su WhatsApp al <a href={`https://wa.me/${site.whatsapp}`}>+{site.whatsapp}</a></>}.
+    </p>
+    <h2>Quali dati raccolgo e perché</h2>
+    <p>
+      Nome, nome dell’attività, telefono e/o email, tipo di servizio, budget indicativo ed eventuale messaggio. Li uso
+      solo per risponderti e prepararti una proposta: la base giuridica è la tua richiesta (misure precontrattuali,
+      art. 6.1.b GDPR).
+    </p>
+    <h2>Come vengono trattati</h2>
+    <p>
+      La richiesta mi arriva via email tramite il servizio Resend. Il sito è ospitato su Vercel. Non vendo né cedo i tuoi
+      dati a terzi e non li uso per newsletter senza il tuo consenso.
+    </p>
+    <h2>Per quanto tempo</h2>
+    <p>Conservo i dati per il tempo necessario a gestire la richiesta e, se non nasce una collaborazione, al massimo 12 mesi.</p>
+    <h2>I tuoi diritti</h2>
+    <p>
+      Puoi chiedere in qualsiasi momento di accedere ai tuoi dati, correggerli o cancellarli, scrivendomi ai recapiti
+      indicati sopra. Puoi anche proporre reclamo al Garante per la protezione dei dati personali.
+    </p>
+  </main>
+</Base>

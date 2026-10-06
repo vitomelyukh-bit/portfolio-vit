@@ -22,3 +22,20 @@ npm run build
    - `page.webp`: 960 di larghezza, pagina intera (scorre al passaggio del mouse)
 
 La pagina `/progetti/<slug>` viene generata automaticamente.
+
+## Modulo contatti
+
+Il form chiama `/api/lead` (funzione Vercel) che invia un'email con Resend.
+
+| Variabile | Cosa |
+|---|---|
+| `RESEND_API_KEY` | Chiave Resend (dall'integrazione Marketplace) |
+| `LEAD_TO_EMAIL` | Dove arrivano le richieste (più indirizzi separati da virgola) |
+| `RESEND_FROM` | Facoltativa. Senza dominio verificato resta `onboarding@resend.dev`, che consegna solo all'email del proprietario dell'account Resend |
+
+Senza `RESEND_API_KEY` o `LEAD_TO_EMAIL` il form mostra un errore e propone WhatsApp: nessuna richiesta finisce persa in silenzio.
+
+## Link personalizzati (outbound)
+
+- `/?a=Pizzeria%20Mario` mostra un saluto personalizzato in alto e precompila il nome dell'attività nel form
+- `ref`, `utm_source`, `utm_campaign` vengono riportati nell'email della richiesta (es. `/?a=Pizzeria%20Mario&utm_source=bot&utm_campaign=ristoranti-roma`)

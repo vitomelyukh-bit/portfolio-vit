@@ -1,44 +1,118 @@
 ---
 import Base from '../layouts/Base.astro';
 import Mockup from '../components/Mockup.astro';
+import LeadForm from '../components/LeadForm.astro';
 import { projects, categories, type Category } from '../data/projects';
 import { site } from '../data/site';
 
+const FEATURED = 6;
 const used = Object.keys(categories).filter((c) => projects.some((p) => p.category === c)) as Category[];
 const ecommerce = projects.filter((p) => p.category === 'ecommerce').length;
 const sectors = new Set(projects.map((p) => p.sector)).size;
+const byslug = Object.fromEntries(projects.map((p) => [p.slug, p]));
+
+const pains = [
+  {
+    title: 'Il sito c’è, ma il telefono non squilla.',
+    text: 'Bello da vedere, ma non dice in tre secondi cosa fai, quanto costa e come contattarti. Chi arriva, se ne va.',
+  },
+  {
+    title: 'Le serate le passi a rispondere su WhatsApp.',
+    text: 'Orari, prezzi, disponibilità: sempre le stesse domande. Un sito fatto bene risponde al posto tuo e prende prenotazioni anche di notte.',
+  },
+  {
+    title: 'Su Google vince sempre il concorrente.',
+    text: 'Non perché lavora meglio di te, ma perché online si vede meglio. Ed è lì che il cliente decide, in pochi secondi.',
+  },
+];
 
 const skills = [
-  { title: 'Siti vetrina', text: 'Design su misura, testi orientati alla conversione, veloci su ogni dispositivo.', ref: ['rare', 'malcusa', 'workadvizee'] },
-  { title: 'E-commerce', text: 'Catalogo, carrello, checkout, account cliente e spedizioni, anche in più lingue.', ref: ['mimaelulu', 'evoos', 'malcusa'] },
-  { title: 'Prenotazioni online', text: 'Calendario con disponibilità reale, conferme e pagamento online o in sede.', ref: ['olizen'] },
-  { title: 'Pagamenti & gift card', text: 'Incassi online con Stripe, buoni regalo, acquisti di servizi.', ref: ['white-garden', 'olizen'] },
-  { title: 'Aree riservate & admin', text: 'Login, area clienti, pannelli per gestire contenuti e richieste.', ref: ['iamundo-candido', 'redmoon', 'olizen'] },
-  { title: 'Lead generation', text: 'Moduli guidati, CTA chiama / WhatsApp, landing che portano richieste.', ref: ['fed-outsourcing', 'galletti', 'ricci'] },
-  { title: 'Automazioni con AI', text: 'Contenuti e notizie generati ogni giorno, contatti richiamati da un assistente AI.', ref: ['titrovano', 'iamundo-candido', 'fed-outsourcing'] },
-  { title: 'SEO locale & contenuti', text: 'Struttura, dati strutturati e blog per farsi trovare su Google e dalle AI.', ref: ['titrovano', 'ricci', 'evoos'] },
+  { title: 'Siti che convertono', text: 'Pagine chiare, veloci da telefono, scritte per far chiamare, prenotare o comprare.', ref: ['rare', 'galletti', 'ricci'] },
+  { title: 'E-commerce', text: 'Catalogo, carrello, pagamenti, account cliente e spedizioni, anche in più lingue.', ref: ['mimaelulu', 'evoos', 'malcusa'] },
+  { title: 'Prenotazioni online', text: 'Il cliente sceglie giorno e orario tra quelli liberi e paga online o in sede.', ref: ['olizen'] },
+  { title: 'Pagamenti & gift card', text: 'Incassi online con Stripe, buoni regalo, servizi acquistabili dal sito.', ref: ['white-garden', 'olizen'] },
+  { title: 'Pannelli per gestirlo da te', text: 'Aggiorni prezzi, news e contenuti da solo, senza chiamare nessuno.', ref: ['redmoon', 'iamundo-candido'] },
+  { title: 'Più richieste di contatto', text: 'Moduli guidati, pulsanti chiama e WhatsApp sempre a portata di pollice.', ref: ['fed-outsourcing', 'galletti'] },
+  { title: 'Automazioni con AI', text: 'Contenuti pubblicati ogni giorno, contatti richiamati da un assistente AI.', ref: ['titrovano', 'iamundo-candido'] },
+  { title: 'Visibilità su Google', text: 'Struttura, SEO locale e scheda Google Maps curata per farti trovare in zona.', ref: ['titrovano', 'ricci'] },
 ];
-const byslug = Object.fromEntries(projects.map((p) => [p.slug, p]));
-const contactHref = site.email ? `mailto:${site.email}` : site.whatsapp ? `https://wa.me/${site.whatsapp}` : '';
+
+const steps = [
+  { title: 'Ci sentiamo 15 minuti', text: 'Mi racconti la tua attività e cosa oggi non funziona. Al telefono o su WhatsApp, gratis.' },
+  { title: 'Ricevi una proposta chiara', text: 'Cosa faccio, entro quando e quanto costa. Prezzo fisso: sai subito quanto spendi.' },
+  { title: 'Costruisco, tu approvi', text: 'Vedi il sito mentre prende forma e lo sistemiamo insieme finché non ti convince.' },
+  { title: 'Online, e non sparisco', text: 'Lo pubblico, lo collego a Google e ti spiego come usarlo. Se dopo ti serve qualcosa, mi scrivi.' },
+];
+
+const compare = {
+  me: [
+    'Parli con chi il sito lo costruisce davvero',
+    'Design, sviluppo, testi e SEO da un’unica persona',
+    'Ogni sito progettato da zero per la tua attività',
+    'Prenotazioni, pagamenti, pannelli e automazioni su misura',
+  ],
+  agency: [
+    'Parli con un commerciale, il lavoro lo fa qualcun altro',
+    'Più persone, più passaggi, più tempi morti',
+    'Spesso un template adattato alla meglio',
+    'Costi di struttura che finiscono nel tuo preventivo',
+  ],
+};
+
+const faqs = [
+  {
+    q: 'Quanto costa un sito?',
+    a: 'Dipende da cosa ti serve: una pagina vetrina e un e-commerce con centinaia di prodotti sono lavori molto diversi. Dopo la chiamata ti mando un preventivo a prezzo fisso, così sai fin da subito quanto spendi.',
+  },
+  {
+    q: 'Quanto tempo ci vuole?',
+    a: 'Te lo scrivo nella proposta, con una data di consegna. Dipende da quante pagine e funzioni servono e da quanto velocemente arrivano testi e foto.',
+  },
+  {
+    q: 'Ho già un sito: devo rifarlo da zero?',
+    a: 'Non per forza. Lo guardiamo insieme: a volte bastano interventi mirati, altre volte conviene ripartire. Te lo dico con onestà, anche se significa lavorare meno.',
+  },
+  {
+    q: 'Potrò modificarlo da solo?',
+    a: 'Sì. Se aggiorni spesso prezzi, menù, news o foto ti preparo un pannello semplice per farlo in autonomia, come per Red Moon Traslochi o lo Studio Iamundo & Candido.',
+  },
+  {
+    q: 'Ti occupi anche di Google Maps?',
+    a: 'Sì. Con TiTrovano curo ogni settimana la scheda Google delle attività locali: novità, risposte alle recensioni e strumenti per riceverne di nuove.',
+  },
+  {
+    q: 'Dominio, hosting, email: chi se ne occupa?',
+    a: 'Io. Posso partire da zero o lavorare su quello che hai già. Tu non devi configurare niente.',
+  },
+];
 ---
 
 <Base
-  title={`${site.name} · Portfolio siti web ed e-commerce`}
-  description={`${projects.length} siti, e-commerce e piattaforme progettati e sviluppati da ${site.name}.`}
+  title={`${site.name} · Siti web che portano clienti alle attività locali`}
+  description="Siti, e-commerce e prenotazioni online per attività locali, progettati e sviluppati da una sola persona. Richiedi una proposta gratuita."
 >
   <main>
+    <!-- HERO -->
     <section class="hero">
+      <p class="hello" id="hello" hidden></p>
       <p class="eyebrow mono" data-reveal>
-        <span class="dot"></span> {site.role} · {site.city}
+        <span class="dot"></span> Siti web per attività locali · {site.city} e tutta Italia
       </p>
       <h1 class="hero__title" data-reveal>
-        Siti, e-commerce<br />e gestionali che <em>lavorano</em><br />per chi li usa.
+        Un sito che porta clienti,<br /><em>non solo complimenti.</em>
       </h1>
       <div class="hero__foot" data-reveal>
-        <p class="hero__lead">
-          Dall’idea alla messa online, faccio tutto io: design, sviluppo, testi, pagamenti, prenotazioni e SEO. Qui sotto
-          trovi alcuni dei progetti che ho realizzato, tutti online e visitabili.
-        </p>
+        <div>
+          <p class="hero__lead">
+            Progetto e costruisco siti, e-commerce e prenotazioni online per ristoranti, studi, centri estetici e negozi.
+            Dal primo messaggio alla messa online parli sempre con me: nessuna agenzia, nessun passaggio di mano.
+          </p>
+          <div class="project__actions hero__ctas">
+            <a class="btn btn--big btn--lime" href="#contatti">Richiedi la proposta gratuita <span aria-hidden="true">→</span></a>
+            <a class="btn btn--big btn--ghost" href="#lavori">Guarda i lavori</a>
+          </div>
+          <p class="micro mono">Gratis e senza impegno · Ti rispondo di persona</p>
+        </div>
         <dl class="stats">
           <div><dt>Progetti online</dt><dd>{projects.length}</dd></div>
           <div><dt>E-commerce</dt><dd>{ecommerce}</dd></div>
@@ -55,18 +129,73 @@ const contactHref = site.email ? `mailto:${site.email}` : site.whatsapp ? `https
       </div>
     </div>
 
+    <!-- PROOF -->
+    <section class="trust">
+      <p class="mono trust__label">Hanno scelto di lavorare con me</p>
+      <ul class="trust__names">
+        {projects.map((p) => <li style={`--accent:${p.accent}`}>{p.name}</li>)}
+      </ul>
+    </section>
+
+    <!-- PROBLEM -->
+    <section class="block">
+      <h2 class="section-title" data-reveal>Ti suona<br /><em>familiare?</em></h2>
+      <div class="pains">
+        {pains.map((p, i) => (
+          <article class="pain" data-reveal style={`--d:${i * 80}ms`}>
+            <span class="mono pain__num">{String(i + 1).padStart(2, '0')}</span>
+            <h3>{p.title}</h3>
+            <p>{p.text}</p>
+          </article>
+        ))}
+      </div>
+      <p class="bridge" data-reveal>
+        Il problema quasi mai è il tuo lavoro. È <em>come lo racconti online.</em> Ed è esattamente quello che sistemo.
+      </p>
+    </section>
+
+    <!-- SOLUTION -->
+    <section id="competenze" class="block">
+      <div class="section-head section-head--plain">
+        <h2 class="section-title" data-reveal>Cosa costruisco<br /><em>per la tua attività</em></h2>
+        <p class="section-sub" data-reveal>Non vendo pacchetti uguali per tutti: parto da come lavori e da come ti cercano i tuoi clienti.</p>
+      </div>
+      <div class="skills__grid">
+        {skills.map((s, i) => (
+          <article class="skill" data-reveal style={`--d:${i * 60}ms`}>
+            <span class="mono skill__num">{String(i + 1).padStart(2, '0')}</span>
+            <h3>{s.title}</h3>
+            <p>{s.text}</p>
+            <p class="skill__ref mono">
+              Es.{' '}
+              {s.ref.map((r, k) => (
+                <>
+                  <a href={`/progetti/${r}`}>{byslug[r].name}</a>
+                  {k < s.ref.length - 1 ? ', ' : ''}
+                </>
+              ))}
+            </p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- WORK -->
     <section id="lavori" class="work">
       <div class="section-head">
-        <h2 class="section-title" data-reveal>Lavori <sup class="mono">{projects.length}</sup></h2>
+        <div>
+          <h2 class="section-title" data-reveal>Lavori veri,<br /><em>online adesso</em></h2>
+          <p class="section-sub" data-reveal>Passa il mouse sulle anteprime: scorrono come il sito vero. Clicca per vedere com’è fatto.</p>
+        </div>
         <div class="filters" role="group" aria-label="Filtra per tipologia">
           <button class="chip is-active" data-filter="all">Tutti</button>
           {used.map((c) => <button class="chip" data-filter={c}>{categories[c]}</button>)}
         </div>
       </div>
 
-      <ol class="projects">
+      <ol class="projects" id="projects">
         {projects.map((p, i) => (
-          <li class="project" data-category={p.category} style={`--accent:${p.accent}`} data-reveal>
+          <li class:list={['project', { 'is-extra': i >= FEATURED }]} data-category={p.category} style={`--accent:${p.accent}`} data-reveal>
             <div class="project__info">
               <span class="project__num mono">{String(i + 1).padStart(2, '0')}</span>
               <p class="project__meta mono">
@@ -91,55 +220,135 @@ const contactHref = site.email ? `mailto:${site.email}` : site.whatsapp ? `https
           </li>
         ))}
       </ol>
+      {projects.length > FEATURED && (
+        <div class="more">
+          <button class="btn btn--big btn--ghost" id="show-more">
+            Mostra altri {projects.length - FEATURED} lavori <span aria-hidden="true">↓</span>
+          </button>
+        </div>
+      )}
     </section>
 
-    <section id="competenze" class="skills">
-      <h2 class="section-title" data-reveal>Cosa posso<br /><em>costruire per te</em></h2>
-      <div class="skills__grid">
-        {skills.map((s, i) => (
-          <article class="skill" data-reveal style={`--d:${i * 60}ms`}>
-            <span class="mono skill__num">{String(i + 1).padStart(2, '0')}</span>
+    <!-- MID CTA -->
+    <section class="midcta" data-reveal>
+      <p>Ti piace quello che vedi? <em>Il prossimo può essere il tuo.</em></p>
+      <a class="btn btn--big btn--lime" href="#contatti">Richiedi la proposta gratuita <span aria-hidden="true">→</span></a>
+    </section>
+
+    <!-- PROCESS -->
+    <section id="metodo" class="block">
+      <h2 class="section-title" data-reveal>Come<br /><em>lavoriamo</em></h2>
+      <ol class="steps">
+        {steps.map((s, i) => (
+          <li class="step" data-reveal style={`--d:${i * 80}ms`}>
+            <span class="step__num">{i + 1}</span>
             <h3>{s.title}</h3>
             <p>{s.text}</p>
-            <p class="skill__ref mono">
-              Es.{' '}
-              {s.ref.map((r, k) => (
-                <>
-                  <a href={`/progetti/${r}`}>{byslug[r].name}</a>
-                  {k < s.ref.length - 1 ? ', ' : ''}
-                </>
-              ))}
-            </p>
-          </article>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <!-- COMPARE -->
+    <section class="block">
+      <h2 class="section-title" data-reveal>Perché con me<br /><em>e non con un’agenzia</em></h2>
+      <div class="compare" data-reveal>
+        <div class="compare__col compare__col--me">
+          <p class="mono">Con me</p>
+          <ul>{compare.me.map((x) => <li>{x}</li>)}</ul>
+        </div>
+        <div class="compare__col">
+          <p class="mono">Agenzia tipica</p>
+          <ul>{compare.agency.map((x) => <li>{x}</li>)}</ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="block faq">
+      <h2 class="section-title" data-reveal>Domande<br /><em>frequenti</em></h2>
+      <div class="faq__list">
+        {faqs.map((f) => (
+          <details class="faq__item" data-reveal>
+            <summary>{f.q}<span aria-hidden="true">+</span></summary>
+            <p>{f.a}</p>
+          </details>
         ))}
       </div>
     </section>
 
-    <section id="contatti" class="contact" data-reveal>
-      <p class="eyebrow mono"><span class="dot"></span> Disponibile per nuovi progetti</p>
-      <h2 class="contact__title">Hai un progetto in mente?<br /><em>Parliamone.</em></h2>
-      <p class="contact__lead">Sito, e-commerce o gestionale: raccontami cosa ti serve e ti preparo una proposta.</p>
-      <div class="project__actions">
-        {site.email && <a class="btn btn--big" href={`mailto:${site.email}`}>{site.email}</a>}
-        {site.whatsapp && <a class={`btn btn--big${site.email ? ' btn--ghost' : ''}`} href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent('Ciao Vitaliy, ho visto il tuo portfolio e vorrei parlarti di un progetto.')}`} target="_blank" rel="noopener">WhatsApp ↗</a>}
-        {!contactHref && <a class="btn btn--big" href={site.github} target="_blank" rel="noopener">GitHub ↗</a>}
+    <!-- CONTACT -->
+    <section id="contatti" class="contact2">
+      <div class="contact2__intro" data-reveal>
+        <p class="eyebrow mono"><span class="dot"></span> Disponibile per nuovi progetti</p>
+        <h2 class="section-title">Raccontami la tua attività.<br /><em>La proposta è gratis.</em></h2>
+        <ol class="next-steps">
+          <li><strong>Leggo la tua richiesta</strong> e ti ricontatto io, di persona.</li>
+          <li><strong>Ci sentiamo 15 minuti</strong> per capire cosa ti serve davvero.</li>
+          <li><strong>Ricevi una proposta scritta</strong> con tempi e prezzo fisso. Decidi tu, senza pressioni.</li>
+        </ol>
+        {site.whatsapp && (
+          <p class="contact2__alt">
+            Preferisci scrivere subito?{' '}
+            <a href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent('Ciao Vitaliy, ho visto il tuo sito e vorrei parlarti della mia attività.')}`} target="_blank" rel="noopener">
+              Scrivimi su WhatsApp ↗
+            </a>
+          </p>
+        )}
+      </div>
+      <div data-reveal style="--d:120ms">
+        <LeadForm />
       </div>
     </section>
   </main>
 
+  <a href="#contatti" class="sticky-cta">Richiedi la proposta gratuita →</a>
+
   <script>
+    // Filtri + "mostra altri"
+    const list = document.getElementById('projects')!;
     const chips = document.querySelectorAll<HTMLButtonElement>('[data-filter]');
     const items = document.querySelectorAll<HTMLElement>('.project');
+    const more = document.getElementById('show-more');
+    let expanded = false;
+    const apply = (f: string) => {
+      items.forEach((it) => {
+        const match = f === 'all' || it.dataset.category === f;
+        const show = match && (expanded || f !== 'all' || !it.classList.contains('is-extra'));
+        it.hidden = !show;
+        if (show) it.classList.add('is-in');
+      });
+      if (more) more.parentElement!.hidden = expanded || f !== 'all';
+    };
     chips.forEach((chip) =>
       chip.addEventListener('click', () => {
-        const f = chip.dataset.filter;
         chips.forEach((c) => c.classList.toggle('is-active', c === chip));
-        items.forEach((it) => {
-          const show = f === 'all' || it.dataset.category === f;
-          it.hidden = !show;
-          if (show) it.classList.add('is-in');
-        });
+        apply(chip.dataset.filter!);
       }),
     );
+    more?.addEventListener('click', () => {
+      expanded = true;
+      apply('all');
+    });
+    apply('all');
+    list.classList.add('is-ready');
+
+    // Personalizzazione per i link outbound: /?a=Pizzeria%20Mario
+    const name = new URLSearchParams(location.search).get('a')?.trim().slice(0, 60);
+    if (name) {
+      const hello = document.getElementById('hello')!;
+      hello.textContent = `👋 Ciao ${name}, ti ho scritto io: qui sotto trovi i miei lavori e come posso aiutarti.`;
+      hello.hidden = false;
+    }
+
+    // Mostra la barra CTA su mobile solo dopo l'hero e fuori dal form
+    const sticky = document.querySelector<HTMLElement>('.sticky-cta')!;
+    const hero = document.querySelector('.hero')!;
+    const contact = document.getElementById('contatti')!;
+    let pastHero = false;
+    let inContact = false;
+    const upd = () => sticky.classList.toggle('is-on', pastHero && !inContact);
+    new IntersectionObserver(([e]) => ((pastHero = !e.isIntersecting), upd())).observe(hero);
+    new IntersectionObserver(([e]) => ((inContact = e.isIntersecting), upd())).observe(contact);
   </script>
 </Base>
