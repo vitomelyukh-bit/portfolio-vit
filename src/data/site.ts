@@ -1,8 +1,8 @@
 // Dati personali: modifica qui nome, ruolo e contatti.
 // Se email o whatsapp sono vuoti, il relativo bottone non viene mostrato.
 export const site = {
-  name: 'Vitaliy Melyukh',
-  initials: 'VM',
+  name: 'Vitaliy Omelyukh',
+  initials: 'VO',
   role: 'Web developer & designer',
   city: 'Roma',
   email: '',
