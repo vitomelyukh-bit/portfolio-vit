@@ -5,7 +5,7 @@ const AI_BOTS = ['GPTBot', 'OAI-SearchBot', 'ChatGPT-User', 'PerplexityBot', 'Cl
 
 export const GET: APIRoute = ({ site }) => {
   const rules = [...AI_BOTS, '*'].map((ua) => `User-agent: ${ua}\nAllow: /\nDisallow: /api/`).join('\n\n');
-  return new Response(`${rules}\n\nSitemap: ${new URL('/sitemap-index.xml', site)}\n`, {
+  return new Response(`${rules}\n\nSitemap: ${new URL("/sitemap.xml", site)}\n`, {
     headers: { 'content-type': 'text/plain; charset=utf-8' },
   });
 };
