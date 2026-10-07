@@ -2,6 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import { projects, categories, type Project } from '../../data/projects';
 import { site } from '../../data/site';
+import Gallery from '../../components/Gallery.astro';
 import { breadcrumbLd, projectLd } from '../../lib/seo';
 
 export function getStaticPaths() {
@@ -68,6 +69,11 @@ const jsonLd = [
           <img src={`/shots/${p.slug}/mobile.webp`} alt={`${p.name} su smartphone`} width="585" height="1266" loading="lazy" />
         </div>
       </div>
+    </section>
+
+    <section class="detail__shots" data-reveal>
+      <h2 class="mono label">Le schermate</h2>
+      <Gallery slug={p.slug} name={p.name} />
     </section>
 
     <section class="detail__scroll" data-reveal>

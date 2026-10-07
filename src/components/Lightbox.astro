@@ -1,0 +1,59 @@
+---
+// Visore a tutto schermo per le schermate dei progetti. Una sola istanza, nel layout.
+---
+
+<dialog class="lb" id="lb" aria-label="Schermate a tutto schermo">
+  <div class="lb__bar">
+    <span class="lb__count mono" id="lb-count"></span>
+    <button type="button" class="lb__close" id="lb-close" aria-label="Chiudi">✕</button>
+  </div>
+  <div class="lb__track" id="lb-track"></div>
+</dialog>
+
+<script>
+  const dlg = document.getElementById('lb') as HTMLDialogElement;
+  const track = document.getElementById('lb-track')!;
+  const count = document.getElementById('lb-count')!;
+  let total = 0;
+
+  const update = () => {
+    const i = Math.round(track.scrollLeft / track.clientWidth);
+    count.textContent = `${i + 1} / ${total}`;
+  };
+
+  document.addEventListener('click', (e) => {
+    const item = (e.target as HTMLElement).closest<HTMLElement>('[data-lb-index]');
+    const group = item?.closest<HTMLElement>('[data-lb-group]');
+    if (!item || !group) return;
+    const imgs = [...group.querySelectorAll('img')];
+    total = imgs.length;
+    track.replaceChildren(
+      ...imgs.map((img) => {
+        const fig = document.createElement('figure');
+        const big = document.createElement('img');
+        big.src = img.currentSrc || img.src;
+        big.alt = img.alt;
+        fig.append(big);
+        return fig;
+      }),
+    );
+    dlg.dataset.kind = group.dataset.lbGroup!.endsWith('-d') ? 'd' : 'm';
+    dlg.showModal();
+    document.documentElement.style.overflow = 'hidden';
+    track.scrollTo({ left: Number(item.dataset.lbIndex) * track.clientWidth, behavior: 'instant' as ScrollBehavior });
+    update();
+  });
+
+  track.addEventListener('scroll', () => requestAnimationFrame(update), { passive: true });
+  document.getElementById('lb-close')!.addEventListener('click', () => dlg.close());
+  dlg.addEventListener('close', () => (document.documentElement.style.overflow = ''));
+  // Tocco sullo sfondo nero = chiudi
+  track.addEventListener('click', (e) => {
+    if ((e.target as HTMLElement).tagName !== 'IMG') dlg.close();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (!dlg.open) return;
+    if (e.key === 'ArrowRight') track.scrollBy({ left: track.clientWidth, behavior: 'smooth' });
+    if (e.key === 'ArrowLeft') track.scrollBy({ left: -track.clientWidth, behavior: 'smooth' });
+  });
+</script>

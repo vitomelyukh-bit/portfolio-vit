@@ -1,5 +1,5 @@
 ---
-title: "Prenotazioni online senza impazzire su WhatsApp · VitaStrategy"
+title: "Prenotazioni online senza impazzire su WhatsApp · vitastrategy"
 description: "Passi le serate a rispondere ai clienti per fissare appuntamenti? Come far prenotare online, cosa serve e quali errori evitare, passo per passo."
 h1: "Come far prenotare online i clienti senza passare le serate su WhatsApp?"
 rispostaBreve: "Serve un sistema in cui il cliente vede da solo gli orari liberi, sceglie e conferma, e tu ricevi la prenotazione già fatta. Può essere il tuo sito o una piattaforma esterna: il primo ti lascia il rapporto con il cliente, la seconda è più veloce da attivare ma detta le regole. In entrambi i casi conta che prenotare richieda pochi tocchi da telefono."

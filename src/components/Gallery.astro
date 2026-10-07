@@ -1,0 +1,58 @@
+---
+// Schermate a scorrimento di un progetto (telefono / computer).
+// Tocca un'immagine per aprirla a tutto schermo (vedi Lightbox.astro).
+import gallery from '../data/gallery.json';
+
+interface Props {
+  slug: string;
+  name: string;
+  eager?: boolean;
+  /** Vista iniziale */
+  start?: 'm' | 'd';
+}
+const { slug, name, eager = false, start = 'm' } = Astro.props;
+const g = (gallery as Record<string, { m: number; d: number }>)[slug] ?? { m: 0, d: 0 };
+const range = (n: number) => Array.from({ length: n }, (_, i) => i);
+const kinds = [
+  { k: 'm', label: 'Telefono', n: g.m, w: 600, h: 1298 },
+  { k: 'd', label: 'Computer', n: g.d, w: 1280, h: 800 },
+].filter((x) => x.n > 0);
+---
+
+<div class="gal" data-start={start}>
+  {kinds.length > 1 && (
+    <div class="gal__switch" role="tablist" aria-label="Vista">
+      {kinds.map((x) => (
+        <button type="button" role="tab" data-kind={x.k} aria-selected={x.k === start ? 'true' : 'false'}>{x.label}</button>
+      ))}
+    </div>
+  )}
+  {kinds.map((x) => (
+    <div class:list={['gal__track', `gal__track--${x.k}`]} data-kind={x.k} hidden={x.k !== start} data-lb-group={`${slug}-${x.k}`}>
+      {range(x.n).map((i) => (
+        <button type="button" class="gal__item" data-lb-index={i} aria-label={`Ingrandisci schermata ${i + 1} di ${name}`}>
+          <img
+            src={`/shots/${slug}/${x.k}-${i}.webp`}
+            alt={`${name}, schermata ${i + 1} (${x.label.toLowerCase()})`}
+            width={x.w}
+            height={x.h}
+            loading={eager && i < 2 ? 'eager' : 'lazy'}
+            decoding="async"
+          />
+        </button>
+      ))}
+    </div>
+  ))}
+  <p class="gal__hint mono">← scorri · tocca per ingrandire</p>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.gal').forEach((gal) => {
+    gal.querySelectorAll<HTMLButtonElement>('.gal__switch button').forEach((b) =>
+      b.addEventListener('click', () => {
+        gal.querySelectorAll('.gal__switch button').forEach((x) => x.setAttribute('aria-selected', String(x === b)));
+        gal.querySelectorAll<HTMLElement>('.gal__track').forEach((t) => (t.hidden = t.dataset.kind !== b.dataset.kind));
+      }),
+    );
+  });
+</script>

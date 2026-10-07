@@ -1,7 +1,7 @@
 ---
 nome: Centri estetici, massaggi e tatuatori
 ordine: 2
-title: Sito web per centri estetici, massaggi e tatuatori · VitaStrategy
+title: Sito web per centri estetici, massaggi e tatuatori · vitastrategy
 description: "Sito con prenotazione online, listino chiaro e gift card per centri estetici, centri massaggi, parrucchieri e studi di tatuaggio."
 h1: Sito web per centri estetici, centri massaggi e studi di tatuaggio
 intro: "Nel benessere il cliente vuole sapere tre cose: cosa fai, quanto costa e quando può venire. Se per scoprirlo deve scriverti e aspettare, spesso prenota da chi glielo fa vedere subito."

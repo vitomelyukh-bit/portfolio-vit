@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import Mockup from '../../components/Mockup.astro';
+import Gallery from '../../components/Gallery.astro';
 import LeadForm from '../../components/LeadForm.astro';
 import { projects } from '../../data/projects';
 import { breadcrumbLd, faqLd, serviceLd } from '../../lib/seo';
@@ -71,6 +72,7 @@ const jsonLd = [
       <section class="work">
         <div class="section-head">
           <h2 class="section-title" data-reveal>Lavori<br /><em>in questo settore</em></h2>
+          <a class="btn" href={`/portfolio/?s=${s.id}`}>Sfoglia nel portfolio →</a>
         </div>
         <ol class="projects is-ready">
           {lavori.map((p, i) => (
@@ -88,6 +90,9 @@ const jsonLd = [
               <a href={`/progetti/${p.slug}/`} class="project__visual" tabindex="-1" aria-hidden="true">
                 <Mockup slug={p.slug} name={p.name} url={p.url} eager={i === 0} />
               </a>
+              <div class="project__gallery">
+                <Gallery slug={p.slug} name={p.name} />
+              </div>
             </li>
           ))}
         </ol>

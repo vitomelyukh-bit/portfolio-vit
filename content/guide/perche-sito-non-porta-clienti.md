@@ -1,5 +1,5 @@
 ---
-title: "Perché il mio sito non porta clienti? · VitaStrategy"
+title: "Perché il mio sito non porta clienti? · vitastrategy"
 description: "Hai un sito ma il telefono non squilla? Le cause più comuni, da come si vede sul telefono a cosa manca nei testi, e come sistemarle una per una."
 h1: "Perché il mio sito non porta clienti?"
 rispostaBreve: "Quasi sempre il problema non è il tuo lavoro ma il sito: non dice in pochi secondi cosa fai, dove e come contattarti, oppure nessuno lo trova. Controlla prima come si vede dal telefono, poi cosa c'è scritto in alto nella home, poi se compari su Google quando cerchi il tuo servizio in zona. Sono tre controlli che puoi fare da solo in dieci minuti."

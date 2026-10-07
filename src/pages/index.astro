@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import Mockup from '../components/Mockup.astro';
+import Gallery from '../components/Gallery.astro';
 import LeadForm from '../components/LeadForm.astro';
 import { projects, categories, type Category } from '../data/projects';
 import { site } from '../data/site';
@@ -235,9 +236,15 @@ const faqs = [
             <a href={`/progetti/${p.slug}`} class="project__visual" tabindex="-1" aria-hidden="true">
               <Mockup slug={p.slug} name={p.name} url={p.url} eager={i < 2} />
             </a>
+            <div class="project__gallery">
+              <Gallery slug={p.slug} name={p.name} />
+            </div>
           </li>
         ))}
       </ol>
+      <div class="work__all">
+        <a class="btn btn--big" href="/portfolio/">Sfoglia il portfolio completo →</a>
+      </div>
       {projects.length > FEATURED && (
         <div class="more">
           <button class="btn btn--big btn--ghost" id="show-more">
@@ -269,10 +276,10 @@ const faqs = [
 
     <!-- COMPARE -->
     <section class="block">
-      <h2 class="section-title" data-reveal>Perché VitaStrategy<br /><em>e non un’agenzia qualunque</em></h2>
+      <h2 class="section-title" data-reveal>Perché vitastrategy<br /><em>e non un’agenzia qualunque</em></h2>
       <div class="compare" data-reveal>
         <div class="compare__col compare__col--me">
-          <p class="mono">Con VitaStrategy</p>
+          <p class="mono">Con vitastrategy</p>
           <ul>{compare.me.map((x) => <li>{x}</li>)}</ul>
         </div>
         <div class="compare__col">
@@ -329,7 +336,7 @@ const faqs = [
         {site.whatsapp && (
           <p class="contact2__alt">
             Preferisci scrivere subito?{' '}
-            <a href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent('Ciao VitaStrategy, ho visto il vostro sito e vorrei parlarvi della mia attività.')}`} target="_blank" rel="noopener">
+            <a href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent('Ciao vitastrategy, ho visto il vostro sito e vorrei parlarvi della mia attività.')}`} target="_blank" rel="noopener">
               Scrivici su WhatsApp ↗
             </a>
           </p>
@@ -376,7 +383,7 @@ const faqs = [
     const name = new URLSearchParams(location.search).get('a')?.trim().slice(0, 60);
     if (name) {
       const hello = document.getElementById('hello')!;
-      hello.textContent = `👋 Ciao ${name}, ti abbiamo scritto noi: qui sotto trovi i nostri lavori e come possiamo aiutarti.`;
+      hello.textContent = `Ciao ${name}, ti abbiamo scritto noi: qui sotto trovi i nostri lavori e come possiamo aiutarti.`;
       hello.hidden = false;
     }
 

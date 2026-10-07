@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import { site } from '../data/site';
 import Logo from '../components/Logo.astro';
+import Lightbox from '../components/Lightbox.astro';
 
 interface Props {
   title: string;
@@ -11,7 +12,7 @@ interface Props {
   jsonLd?: object[];
   type?: 'website' | 'article';
 }
-const { title, description, image = '/og.webp', jsonLd = [], type = 'website' } = Astro.props;
+const { title, description, image = '/og-image.png', jsonLd = [], type = 'website' } = Astro.props;
 const path = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
 const canonical = new URL(path, Astro.site).toString();
 ---
@@ -34,12 +35,14 @@ const canonical = new URL(path, Astro.site).toString();
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     {jsonLd.map((j) => <script type="application/ld+json" set:html={JSON.stringify(j)} />)}
-    <meta name="theme-color" content="#0d0d0c" />
+    <meta name="theme-color" content="#0a0b0d" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap"
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -49,7 +52,7 @@ const canonical = new URL(path, Astro.site).toString();
         <Logo />
       </a>
       <nav class="nav__links">
-        <a href="/#lavori">Lavori</a>
+        <a href="/portfolio/">Portfolio</a>
         <a href="/settori">Settori</a>
         <a href="/guide">Guide</a>
         <a href="/#faq">FAQ</a>
@@ -58,6 +61,8 @@ const canonical = new URL(path, Astro.site).toString();
     </header>
 
     <slot />
+
+    <Lightbox />
 
     <footer class="footer">
       <span>© {new Date().getFullYear()} {site.name} · {site.tagline}</span>

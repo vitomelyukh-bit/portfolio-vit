@@ -1,5 +1,5 @@
 ---
-title: "Sito del ristorante: cosa serve per far prenotare · VitaStrategy"
+title: "Sito del ristorante: cosa serve per far prenotare · vitastrategy"
 description: "Menù leggibile, prenotazione in un tocco, foto vere, orari giusti: cosa deve avere il sito di un ristorante o di un locale per riempire i tavoli."
 h1: "Il sito del ristorante: cosa deve avere per far prenotare?"
 rispostaBreve: "Il sito di un ristorante deve far fare una cosa: prenotare, o almeno venire. Per questo servono il menù leggibile dal telefono, un modo per prenotare sempre visibile, foto vere del locale e dei piatti, orari e indirizzo giusti. Tutto il resto viene dopo."

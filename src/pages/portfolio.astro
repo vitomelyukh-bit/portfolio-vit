@@ -1,0 +1,102 @@
+---
+// Pagina da mostrare durante la vendita: pensata per il telefono.
+// Filtro rapido: /portfolio/?s=ristoranti (slug dei settori)
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Gallery from '../components/Gallery.astro';
+import LeadForm from '../components/LeadForm.astro';
+import { projects, categories } from '../data/projects';
+import { site } from '../data/site';
+import { breadcrumbLd } from '../lib/seo';
+
+const settori = (await getCollection('settori')).sort((a, b) => a.data.ordine - b.data.ordine);
+// Nome breve del settore per i filtri
+const breve: Record<string, string> = {
+  ristoranti: 'Ristoranti',
+  'centri-estetici': 'Benessere e tattoo',
+  'studi-professionali': 'Studi e consulenti',
+  'e-commerce': 'Negozi online',
+  'imprese-servizi': 'Imprese di servizi',
+};
+const settoriDi = (slug: string) => settori.filter((s) => s.data.progetti.includes(slug)).map((s) => s.id);
+---
+
+<Base
+  title={`Portfolio: i nostri lavori · ${site.name}`}
+  description="I siti, gli e-commerce e le prenotazioni online che abbiamo realizzato per attività locali, con le schermate da telefono e da computer."
+  jsonLd={[breadcrumbLd([['Home', '/'], ['Portfolio', '/portfolio/']])]}
+>
+  <main class="pf">
+    <header class="pf__head">
+      <p class="eyebrow mono"><span class="dot"></span> {projects.length} lavori online</p>
+      <h1 class="pf__title">I nostri lavori, <em>dal telefono.</em></h1>
+      <p class="pf__lead">Scegli il tuo tipo di attività, poi scorri le schermate col dito. Toccane una per vederla a tutto schermo.</p>
+    </header>
+
+    <nav class="pf__filters" aria-label="Filtra per tipo di attività">
+      <button type="button" class="chip is-active" data-s="all">Tutti</button>
+      {settori.map((s) => <button type="button" class="chip" data-s={s.id}>{breve[s.id] ?? s.data.nome}</button>)}
+    </nav>
+
+    <ol class="pf__list">
+      {projects.map((p, i) => (
+        <li class="pf__item" data-settori={settoriDi(p.slug).join(' ')} style={`--accent:${p.accent}`} id={p.slug}>
+          <div class="pf__meta">
+            <span class="mono pf__num">{String(i + 1).padStart(2, '0')}</span>
+            <span class="mono">{p.sector} · {p.location}</span>
+          </div>
+          <h2 class="pf__name">{p.name}</h2>
+          <p class="pf__pitch">{p.pitch}</p>
+
+          <Gallery slug={p.slug} name={p.name} eager={i < 2} />
+
+          <ul class="pf__features">
+            {p.features.slice(0, 3).map((f) => <li>{f}</li>)}
+          </ul>
+          <div class="pf__actions">
+            <a class="btn" href={p.url} target="_blank" rel="noopener">Apri il sito vero ↗</a>
+            <a class="pf__more mono" href={`/progetti/${p.slug}/`}>{categories[p.category].toLowerCase()} · dettagli →</a>
+          </div>
+        </li>
+      ))}
+    </ol>
+
+    <p class="pf__empty" hidden>Nessun lavoro in questo settore, per ora. Guarda gli altri: il metodo è lo stesso.</p>
+
+    <section class="pf__cta" id="contatti">
+      <h2 class="section-title">Ti piace?<br /><em>Lasciaci i tuoi dati.</em></h2>
+      <p class="section-sub">Ti ricontattiamo noi per una proposta gratuita, senza impegno.</p>
+      <LeadForm />
+    </section>
+  </main>
+
+  <a href="#contatti" class="sticky-cta is-on">Voglio un sito così →</a>
+
+  <script>
+    const chips = document.querySelectorAll<HTMLButtonElement>('.pf__filters .chip');
+    const items = document.querySelectorAll<HTMLElement>('.pf__item');
+    const empty = document.querySelector<HTMLElement>('.pf__empty')!;
+    const apply = (s: string) => {
+      let n = 0;
+      chips.forEach((c) => c.classList.toggle('is-active', c.dataset.s === s));
+      items.forEach((it) => {
+        const show = s === 'all' || (it.dataset.settori ?? '').split(' ').includes(s);
+        it.hidden = !show;
+        if (show) n++;
+      });
+      empty.hidden = n > 0;
+      const url = new URL(location.href);
+      if (s === 'all') url.searchParams.delete('s');
+      else url.searchParams.set('s', s);
+      history.replaceState(null, '', url);
+    };
+    chips.forEach((c) =>
+      c.addEventListener('click', () => {
+        apply(c.dataset.s!);
+        document.querySelector('.pf__list')!.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }),
+    );
+    const s = new URLSearchParams(location.search).get('s');
+    if (s && [...chips].some((c) => c.dataset.s === s)) apply(s);
+  </script>
+</Base>

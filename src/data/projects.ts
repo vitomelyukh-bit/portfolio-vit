@@ -17,6 +17,8 @@ export interface Project {
   location: string;
   /** Una riga, mostrata nella card */
   tagline: string;
+  /** Una frase semplicissima per chi non è del mestiere (pagina portfolio) */
+  pitch: string;
   /** Paragrafo introduttivo per la pagina del progetto */
   intro: string;
   /** Funzionalità principali */
@@ -36,6 +38,7 @@ export const projects: Project[] = [
     sector: 'Merch ricamato K-pop',
     location: 'Roma',
     tagline: 'E-commerce bilingue per un brand di ricami ispirati ai BTS, con una community fedele da oltre 1.300 recensioni.',
+    pitch: 'Negozio online: il cliente sceglie il prodotto, paga e lo riceve a casa, in Italia e all’estero.',
     intro:
       'Un negozio online costruito attorno ai fan: si entra scegliendo il proprio membro preferito, si scoprono i best seller del mese e si ordina con spedizione in Italia ed Europa. Catalogo, carrello, account cliente e blog, tutto in italiano e in inglese.',
     features: [
@@ -57,6 +60,7 @@ export const projects: Project[] = [
     sector: 'Servizio per attività locali',
     location: 'Italia',
     tagline: 'Il nostro servizio per far trovare le attività locali su Google Maps e ChatGPT, con un sito che si aggiorna da solo ogni giorno.',
+    pitch: 'Il nostro servizio: teniamo viva la scheda Google Maps delle attività, così i clienti in zona le trovano.',
     intro:
       'TiTrovano è un nostro servizio: per 59 € al mese teniamo viva la scheda Google Maps delle attività locali, con novità ogni settimana, risposte alle recensioni e strumenti per riceverne di nuove. Il sito spiega il servizio con esempi concreti e porta all’analisi gratuita. Dietro c’è un motore di contenuti che ogni giorno scrive e pubblica nuove guide per i titolari.',
     features: [
@@ -77,6 +81,7 @@ export const projects: Project[] = [
     sector: 'Sushi & cocktail bar',
     location: 'Reggio Calabria',
     tagline: 'Sito d’atmosfera per un sushi e cocktail bar: luce bassa, neon e prenotazioni in un tap.',
+    pitch: 'Sito per ristorante: mostra il locale e il menù, e il tavolo si prenota in un tocco.',
     intro:
       'Un sito che fa venire voglia di sedersi al tavolo. Racconta il locale, il banco sushi e il cocktail bar con un’estetica scura e curata, e porta l’utente dritto alla prenotazione via telefono o WhatsApp.',
     features: [
@@ -97,6 +102,7 @@ export const projects: Project[] = [
     sector: 'Tappeti di lusso fatti a mano',
     location: 'Milano',
     tagline: 'Vetrina e shop per un atelier milanese di tappeti artigianali di radice sarda.',
+    pitch: 'Vetrina di lusso: fa capire il valore del prodotto e porta dritto allo shop online.',
     intro:
       'Un brand di lusso ha bisogno di silenzio visivo: immagini grandi, tipografia essenziale, nessun rumore. Il sito presenta l’atelier e le collezioni e porta allo shop, pensato per un pubblico internazionale.',
     features: [
@@ -117,6 +123,7 @@ export const projects: Project[] = [
     sector: 'Centro massaggi',
     location: 'Roma · Jonio – Talenti',
     tagline: 'Prenotazione online con orari liberi in tempo reale, gift card e pagamento online o in centro.',
+    pitch: 'Il cliente sceglie il massaggio, vede gli orari liberi e prenota da solo, anche di notte.',
     intro:
       'Per un centro massaggi il sito deve fare una cosa: far prenotare. Si tocca un trattamento, si sceglie giorno e orario tra quelli realmente liberi e si conferma in pochi tap, pagando online o in sede.',
     features: [
@@ -137,6 +144,7 @@ export const projects: Project[] = [
     sector: 'Olio extravergine di oliva',
     location: 'Calabria',
     tagline: 'Storytelling e shop per un olio EVO calabrese da uliveti secolari.',
+    pitch: 'Racconta l’olio e il territorio, e lo vende online con carrello e pagamento.',
     intro:
       'Un prodotto agricolo di qualità si vende raccontandolo. Il sito accompagna dal blend alle tre cultivar autoctone, dal territorio al profilo sensoriale e agli abbinamenti, fino allo shop.',
     features: [
@@ -156,6 +164,7 @@ export const projects: Project[] = [
     sector: 'Studio legale',
     location: 'Roma',
     tagline: 'Consulenza legale online: richiesta di un parere scritto, prezzi chiari e risposta in 2–5 giorni.',
+    pitch: 'L’avvocato riceve richieste di consulenza online già complete, con prezzo e tempi chiari.',
     intro:
       'Lo studio offre pareri legali a distanza, e il sito è costruito per trasformare i visitatori in richieste. Prezzo e tempi sono dichiarati subito, la richiesta parte da un modulo guidato e i contenuti rispondono ai dubbi più comuni prima ancora della consulenza.',
     features: [
@@ -176,6 +185,7 @@ export const projects: Project[] = [
     sector: 'Studio di tatuaggi',
     location: 'Roma · Colli Aniene',
     tagline: 'Si sceglie lo stile, si trova l’artista giusto. Con tatuaggi da regalare pagabili online.',
+    pitch: 'Scegli lo stile del tatuaggio e trovi il tatuatore giusto. E un tatuaggio si può regalare pagando online.',
     intro:
       'Otto stili e altrettanti specialisti: il sito parte dallo stile che cerchi e ti porta al tatuatore che lo fa meglio. Chi vuole fare un regalo può acquistare un tatuaggio direttamente online.',
     features: [
@@ -194,6 +204,7 @@ export const projects: Project[] = [
     sector: 'Commercialisti e consulenti del lavoro',
     location: 'Roma Nord',
     tagline: 'Sito istituzionale con area clienti, scadenzario e un motore AI che propone ogni giorno le news da approvare.',
+    pitch: 'Sito dello studio con area clienti, e le notizie si aggiornano ogni giorno con l’aiuto dell’AI.',
     intro:
       'Uno studio storico che voleva un’immagine all’altezza della sua esperienza. Il sito presenta team e servizi e dà accesso a un’area riservata. Le news si scrivono quasi da sole: ogni giorno un’AI legge le fonti istituzionali (INPS, Agenzia delle Entrate, Ministero del Lavoro) e propone fino a due notizie, che lo studio approva da un pannello admin prima della pubblicazione.',
     features: [
@@ -215,6 +226,7 @@ export const projects: Project[] = [
     sector: 'Consulenza per imprese',
     location: 'Italia',
     tagline: 'Identità forte e monospaziata per una rete di consulenti per imprese e professionisti.',
+    pitch: 'Spiega i servizi di consulenza in modo chiaro e porta l’azienda a contattare lo studio.',
     intro:
       'Consulenza del lavoro, fisco, legale e networking sotto un unico marchio. Il sito ha un tono deciso e riconoscibile e mette in chiaro servizi, livelli di servizio garantiti e motivi per sceglierli.',
     features: [
@@ -234,6 +246,7 @@ export const projects: Project[] = [
     sector: 'Traslochi nazionali e internazionali',
     location: 'Italia',
     tagline: 'Sito per un’azienda di traslochi che punta tutto sul preventivo gratuito, con pannello admin per gestirlo.',
+    pitch: 'Chi deve traslocare chiede il preventivo in un minuto. Il titolare aggiorna il sito da solo.',
     intro:
       'Chi trasloca cerca qualcuno di cui fidarsi. Il sito presenta servizi, imballaggio e metodo di lavoro, mette in evidenza iscrizioni e garanzie e porta a richiedere un preventivo. Il cliente gestisce i contenuti da un pannello di amministrazione.',
     features: [
@@ -253,6 +266,7 @@ export const projects: Project[] = [
     sector: 'Gestione del personale e appalti',
     location: 'Roma',
     tagline: 'Landing B2B per generare contatti qualificati, poi richiamati da un assistente AI e da un commerciale.',
+    pitch: 'Raccoglie i contatti delle aziende interessate, che poi vengono richiamate in automatico.',
     intro:
       'Una landing pensata per imprese di edilizia, trasporti e pulizie che vogliono ridurre il costo del personale. Numeri, settori, funzionamento e FAQ rispondono alle obiezioni, e i contatti raccolti vengono richiamati prima da un sistema AI e poi da un venditore.',
     features: [
@@ -272,6 +286,7 @@ export const projects: Project[] = [
     sector: 'Disinfestazione',
     location: 'Roma e provincia',
     tagline: 'Landing pensata per generare chiamate: prezzi chiari, CTA sempre a portata e WhatsApp.',
+    pitch: 'Chi ha un’emergenza chiama o scrive su WhatsApp con un tocco, e vede subito i prezzi.',
     intro:
       'Chi ha le blatte in casa non vuole leggere: vuole chiamare. La pagina mette prezzi, servizi e contatti in primo piano, con pulsanti per chiamata, WhatsApp e preventivo sempre a portata di pollice.',
     features: [

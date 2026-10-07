@@ -62,7 +62,7 @@ for (const x of [...settori, ...guide]) {
   if (PRIMA_PERSONA.test(t)) err(x.file, `prima persona singolare "${t.match(PRIMA_PERSONA)[0]}": il marchio parla al plurale (noi)`);
   if (RIEMPITIVI.test(t)) err(x.file, `frase riempitiva: "${t.match(RIEMPITIVI)[0]}"`);
   if (!x.data.title || x.data.title.length > 70) err(x.file, `title mancante o oltre 70 caratteri (${x.data.title?.length ?? 0})`);
-  if (!/ · VitaStrategy$/.test(x.data.title ?? '')) err(x.file, `il title deve finire con " · VitaStrategy"`);
+  if (!/ · vitastrategy$/.test(x.data.title ?? '')) err(x.file, `il title deve finire con " · vitastrategy"`);
   if (!x.data.description || x.data.description.length > 170) err(x.file, `description mancante o oltre 170 caratteri (${x.data.description?.length ?? 0})`);
   checkLinks(x, x.body);
 }

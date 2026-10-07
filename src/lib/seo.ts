@@ -23,8 +23,8 @@ export const businessLd = () => ({
   name: site.name,
   description: site.tagline,
   url: SITE_URL,
-  logo: abs('/logo-mark.svg'),
-  image: abs('/og.webp'),
+  logo: abs('/apple-touch-icon.png'),
+  image: abs('/og-image.png'),
   founder: { '@id': personId },
   address: { '@type': 'PostalAddress', addressLocality: site.city, addressCountry: 'IT' },
   areaServed: { '@type': 'Country', name: 'Italia' },
@@ -67,8 +67,8 @@ export const articleLd = (a: { h1: string; description: string; path: string; da
   dateModified: a.dateModified,
   inLanguage: 'it-IT',
   author: { '@type': 'Organization', '@id': orgId, name: site.name },
-  publisher: { '@type': 'Organization', '@id': orgId, name: site.name, logo: { '@type': 'ImageObject', url: abs('/logo-mark.svg') } },
-  image: abs('/og.webp'),
+  publisher: { '@type': 'Organization', '@id': orgId, name: site.name, logo: { '@type': 'ImageObject', url: abs('/apple-touch-icon.png') } },
+  image: abs('/og-image.png'),
 });
 
 export const serviceLd = (s: { name: string; description: string; path: string }) => ({

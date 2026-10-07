@@ -1,7 +1,7 @@
 ---
 nome: Ristoranti e locali
 ordine: 1
-title: Sito web per ristoranti, pizzerie e locali · VitaStrategy
+title: Sito web per ristoranti, pizzerie e locali · vitastrategy
 description: "Un sito per il tuo ristorante che fa prenotare, mostra il menù come si deve e ti fa trovare su Google. Progettato su misura, senza template."
 h1: Sito web per ristoranti, pizzerie e locali
 intro: "Chi sceglie dove mangiare decide dal telefono, in pochi secondi: guarda le foto, il menù, gli orari e quanto è facile prenotare. Il tuo sito deve rispondere a tutto questo prima che apra la pagina del locale accanto."

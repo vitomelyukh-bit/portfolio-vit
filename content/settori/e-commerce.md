@@ -1,7 +1,7 @@
 ---
 nome: E-commerce per artigiani e brand
 ordine: 4
-title: E-commerce per artigiani e piccoli brand · VitaStrategy
+title: E-commerce per artigiani e piccoli brand · vitastrategy
 description: "Negozio online su misura per artigiani, produttori e piccoli brand: catalogo, carrello, pagamenti, spedizioni e più lingue."
 h1: E-commerce per artigiani, produttori e piccoli brand
 intro: "Vendere online non vuol dire solo mettere i prodotti in una pagina. Chi compra da un artigiano o da un piccolo produttore vuole capire la storia dietro il prodotto e fidarsi prima di pagare."
